@@ -1,0 +1,12 @@
+.bg4-image {
+    height: 100vh;
+    min-height: 600px;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('https://freefrontend.com/assets/img/html-css-404-page-templates/Sad-Mac-404-Error-Page.png');
+}

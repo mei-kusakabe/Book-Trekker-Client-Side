@@ -3,13 +3,13 @@ import './Blog.css'
 
 const Blog = () => {
     return (
-        <div className='container mt-5 mb-5 blog border rounded'>
-            <section className="container mt-5" id="faq">
+        <div className='container mb-5 py-5 blog border rounded'>
+            <section className="container" id="faq">
                 <div className="blog-header text-center">
-                    <h1 className="display-5 text-secondary fw-bold">Blog Page
+                    <h1 className="display-5 fw-bold py-5" style={{ color: "#EB6440" }}>Blog Page
                     </h1>
                 </div>
-                <section className="blog-body mt-5">
+                <section className="blog-body">
                     <div className="accordion" id="accordionPanelsStayOpenExample">
                         <div className="accordion-item">
                             <h2 className="accordion-header" id="panelsStayOpen-headingOne">
@@ -92,7 +92,7 @@ const Blog = () => {
                                 aria-labelledby="panelsStayOpen-headingFour">
                                 <div className="accordion-body">
                                     <h6 className="text-muted text-start py-1">
-                                        <table className=''>
+                                        <table className='mx-auto'>
                                             <tr>
                                                 <th>Features</th>
                                                 <th>React</th>
@@ -103,7 +103,7 @@ const Blog = () => {
                                                 <td>Framework Size</td>
                                                 <td>97.5k</td>
                                                 <td>143k</td>
-                                                <td></td>
+                                                <td>58.8k</td>
                                             </tr>
                                             <tr>
                                                 <td>Programming Language</td>

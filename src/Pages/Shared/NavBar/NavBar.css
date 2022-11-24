@@ -1,0 +1,52 @@
+a {
+    text-decoration: none;
+    margin-right: 12px;
+    padding: 3px 6px;
+    color: #EB6440;
+
+}
+
+a:hover {
+    color: red;
+    text-decoration: none;
+}
+
+
+.title {
+    color: #EB6440;
+}
+
+.title:hover {
+    color: #497174;
+
+}
+
+
+
+/* for-small-devices*/
+@media (min-width: 320px) and (max-width : 768px) {
+
+    .nav {
+        overflow-y: hidden;
+    }
+
+    nav img {
+        height: 60px;
+        width: 32px;
+        margin: auto;
+    }
+
+    .sign-out {
+        margin: auto;
+    }
+}
+
+/* for-tablet-devices */
+
+@media (min-width: 769px) and (max-width : 1200px) {
+
+    nav img {
+        height: 60px;
+        width: 32px;
+    }
+}
