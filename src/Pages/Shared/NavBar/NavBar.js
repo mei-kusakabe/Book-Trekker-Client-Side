@@ -7,10 +7,10 @@ const NavBar = () => {
         <div className='header'>
             <Navbar collapseOnSelect className='nav-bg text-white' expand="lg" variant="light">
                 <Container>
-                    <div>
+                    <div className=''>
                         <span>
-                            <img src="https://cdn-icons-png.flaticon.com/512/1164/1164713.png" alt="Logo" width="50" height="45" className="d-inline-block align-text-top" />
-                            <Navbar.Brand href="/home" className='fw-bold mt-5 title'>Book Trekker</Navbar.Brand>
+                            <img src="https://cdn-icons-png.flaticon.com/512/1164/1164713.png" alt="Logo" width="50" height="45" className="d-inline-block align-text-center" />
+                            <Navbar.Brand href="/home" className='fw-bold title'>Book Trekker</Navbar.Brand>
                         </span>
                     </div>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />

@@ -6,7 +6,7 @@ const Blog = () => {
         <div className='container mb-5 py-5 blog border rounded'>
             <section className="container" id="faq">
                 <div className="blog-header text-center">
-                    <h1 className="display-5 fw-bold py-5" style={{ color: "#EB6440" }}>Blog Page
+                    <h1 className="display-5 fw-bold py-5" style={{ textDecoration: 'underline', color: "#EB6440" }}>Blog Page
                     </h1>
                 </div>
                 <section className="blog-body">
