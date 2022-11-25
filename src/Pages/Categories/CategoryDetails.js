@@ -1,0 +1,41 @@
+import React from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
+import './Categories.css'
+
+const CategoryDetails = () => {
+
+    const books = useLoaderData();
+    return (
+        <div className='services'>
+
+            {/* <div className='p-2 list rounded  justify-content-center align-items-center service-page-list'> */}
+
+            <div className='book-all m-5 border-0 justify-content-center align-items-center'>
+                {
+                    books.map((book, i) => <div className='card w-75 mx-auto my-5 service m-5 text-center border-1 p-0  shadow justify-content-center align-items-center'
+                        key={i} >
+
+                        <img src={book?.pic} alt="" className='card-img-top' />
+                        <div className="card-body text-start">
+                            <h5 className='card-title text-center fw-bold' style={{ textDecoration: 'none', color: "#EB6440" }}>{book?.name} </h5>
+                            <br />
+                            <div className='d-inline d-lg-flex'>
+                                <p className='px-3 card-text'> <span className='fw-bold' style={{ textDecoration: 'none', color: "#497174" }}>Resale Price: </span> {book?.resalePrice}</p>
+                                <p className='px-3 card-text'> <span className='fw-bold' style={{ textDecoration: 'none', color: "#497174" }}>Original Price: </span>  {book?.originalPrice}</p>
+                            </div>
+                            <div className='d-inline d-lg-flex'>
+                                <p className='px-3 card-text'> <span className='fw-bold' style={{ textDecoration: 'none', color: "#497174" }}>Location:</span> {book?.location}</p>
+                                <p className='px-3 card-text'><span className='fw-bold' style={{ textDecoration: 'none', color: "#497174" }}>Year of Use:</span>  {book?.yearofuse}</p>
+                            </div>
+                            <p className='px-3 card-text'><span className='fw-bold' style={{ textDecoration: 'none', color: "#497174" }}>Sellers Name:</span>  {book?.SellerName}</p>
+                            <p className='px-3 card-text'><span className='fw-bold' style={{ textDecoration: 'none', color: "#497174" }}>Date Posted:</span>  {book?.PostTime}</p>
+                        </div>
+                        <button className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow"><Link className='link' to={`/allbookscategory/${book?._id}`}>Book Now</Link></button>
+                    </div>)
+                }
+            </div>
+        </div >
+    );
+};
+
+export default CategoryDetails;

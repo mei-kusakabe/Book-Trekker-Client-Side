@@ -26,7 +26,7 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption className='d-flex flex-column justify-content-center h-100'>
-                        <h3 className='ms-5' style={{ color: "#EB6440" }}>"There is no friend as loyal as a book."</h3>
+                        <h3 className='ms-5 fw-bolder' style={{ color: "#EB6440" }}>"There is no friend as loyal as a book."</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
@@ -38,7 +38,7 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption className='d-flex flex-column justify-content-center h-100'>
-                        <h3 className='ms-5' style={{ color: "#EB6440" }}>"Books are a uniquely portable magic."</h3>
+                        <h3 className='ms-5 fw-bolder' style={{ color: "#EB6440" }}>"Books are a uniquely portable magic."</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </Carousel.Caption>
                 </Carousel.Item>

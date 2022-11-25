@@ -25,7 +25,7 @@ const Categories = () => {
             <div className='p-2 list rounded  justify-content-center align-items-center service-page-list'>
                 {
                     categories.map((category, i) => <p key={category._id}>
-                        <button className="button1 px-5  mx-3 fw-bold text-white my-2 border shadow"> <Link className='link' to={`/categories/${category._id}`}> <span className='fw-bold'>{i + 1}.</span>{category.title}</Link></button>
+                        <button className="button1 px-5  mx-3 fw-bold text-white my-2 border shadow"> <Link className='link' to={`/allbookscategory/${category._id}`}> <span className='fw-bold'>{i + 1}.</span>{category.title}</Link></button>
                         {/* <Link to={`/services/${service._id}`}> <span className='fw-bold'>{i + 1}.</span>{service.title}</Link> */}
                     </p>)
                 }
@@ -41,7 +41,7 @@ const Categories = () => {
                             <img src={category?.img} alt="" />
                             <h5 className='p-3 w-100'>{category?.title} </h5>
                             <p className='p-3 text '>  {category?.description}</p>
-                            <button className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow"><Link className='link' to={`/categories/${category?._id}`}>View Details</Link></button>
+                            <button className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow"><Link className='link' to={`/allbookscategory/${category?._id}`}>View Details</Link></button>
                         </div>
 
 
