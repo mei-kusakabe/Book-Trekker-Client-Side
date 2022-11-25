@@ -1,0 +1,161 @@
+.service {
+    border: 1px solid #E6E5A3;
+    border-radius: 5px;
+    padding-bottom: 20px;
+    overflow-x: hidden;
+
+}
+
+.services {
+    /* background-color: #A9AF7E; */
+    background-color: #EFF5F5;
+}
+
+.service img {
+    height: 250px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+.service a {
+    text-decoration: none;
+
+}
+
+.link {
+    text-decoration: none;
+    margin-right: 12px;
+    padding: 3px 6px;
+    color: #EFF5F5;
+
+}
+
+.list .link,
+.list {
+    text-decoration: none;
+    display: flex;
+
+}
+
+.service-page-list {
+    flex-wrap: wrap;
+}
+
+
+.button1,
+.button1:link,
+.button1:visited,
+.button1:hover,
+.button1:active {
+    color: white;
+    /* background: #557153; */
+    background: #EB6440;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.link,
+.link:visited {
+    color: white !important;
+}
+
+.link:hover,
+.link:active {
+    color: #D6E4E5 !important;
+}
+
+
+.service-all {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    gap: 15px;
+
+}
+
+/* .text {
+    display: inline-block;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+} */
+
+/* for-small-devices*/
+@media screen and (max-width:480px) {
+    /* .topic-container {
+        display: grid;
+        grid-template-columns: repeat(1, 2fr);
+        gap: 45px;
+    } */
+
+    .service img {
+        height: 150px;
+        width: 250px;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .list {
+        display: inline-block;
+    }
+}
+
+/* for-tablet-devices */
+
+@media (min-width: 481px) and (max-width : 1200px) {
+    /* .topic-container {
+        display: grid;
+        grid-template-columns: repeat(2, 2fr);
+        gap: 25px;
+    } */
+
+    .service img {
+        height: 150px;
+        width: 350px;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+}
+
+/* for-small-devices*/
+@media screen and (max-width:768px) {
+    .service-all {
+        display: grid;
+        grid-template-columns: repeat(1, 2fr) !important;
+        gap: 15px;
+    }
+
+    .service img {
+        height: 200px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .list {
+        display: inline;
+    }
+}
+
+/* for-tablet-devices */
+
+@media (min-width: 769px) and (max-width : 1200px) {
+    .service-all {
+        display: grid;
+        grid-template-columns: repeat(2, 2fr) !important;
+        gap: 25px;
+    }
+
+    .service img {
+        height: 350px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .list {
+        display: flex;
+    }
+}
+
+/* .course-btn {
+    background-color: #5837D0;
+} */

@@ -6,12 +6,6 @@ a {
 
 }
 
-a:hover {
-    color: red;
-    text-decoration: none;
-}
-
-
 .title {
     color: #EB6440;
 }
