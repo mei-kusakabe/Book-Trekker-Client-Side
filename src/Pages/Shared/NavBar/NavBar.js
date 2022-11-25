@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Container, Image, Nav, Navbar } from 'react-bootstrap';
+import { Container, Dropdown, Image, Nav, Navbar } from 'react-bootstrap';
 import { FaSignOutAlt, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
@@ -50,7 +50,21 @@ const NavBar = () => {
                                             :
 
                                             <>
+
                                                 <Link to='/login' style={{ textDecoration: 'underline', color: "EB6440", textDecorationColor: "#EB6440" }} className='fw-bold'>Login</Link>
+
+                                                <Dropdown>
+                                                    <Dropdown.Toggle className='fw-bolder' style={{ textDecoration: 'none', background: "#EB6440", color: "white" }} id="dropdown-basic">
+                                                        Register
+                                                    </Dropdown.Toggle>
+
+                                                    <Dropdown.Menu>
+                                                        <Dropdown.Item href="/register">As User Account</Dropdown.Item>
+                                                        <Dropdown.Item href="/register">As Seller Account</Dropdown.Item>
+                                                        <Dropdown.Item href="/register">Admin Account</Dropdown.Item>
+                                                    </Dropdown.Menu>
+                                                </Dropdown>
+                                                {/* <Link to='/login' style={{ textDecoration: 'underline', color: "EB6440", textDecorationColor: "#EB6440" }} className='fw-bold'>Login</Link> */}
 
                                             </>
                                     }
