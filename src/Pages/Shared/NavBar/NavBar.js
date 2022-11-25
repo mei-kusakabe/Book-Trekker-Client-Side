@@ -1,8 +1,19 @@
-import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Container, Image, Nav, Navbar } from 'react-bootstrap';
+import { FaSignOutAlt, FaUser } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
 import './NavBar.css'
 
 const NavBar = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
     return (
         <div className='header'>
             <Navbar collapseOnSelect className='nav-bg text-white' expand="lg" variant="light">
@@ -22,24 +33,24 @@ const NavBar = () => {
                             <Nav.Link href="/photogallery" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Photo Gallery</Nav.Link>
                             <Nav.Link href="/contact" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Contact</Nav.Link>
 
-                            {/* <Nav>
+                            <Nav>
                                 <>
                                     {
                                         user?.uid ?
                                             <>
-                                                <span className='fw-bold my-2 mx-2'>{user?.displayName}</span>
+                                                <span className='fw-bold my-2 mx-2' style={{ textDecoration: 'none', color: "#EB6440" }}>{user?.displayName}</span>
 
-                                                <Nav.Link href="/orders" className='pe-2 text-white fw-bold' style={{ textDecoration: 'underline', textDecorationColor: "white" }}>My Review</Nav.Link>
+                                                {/* <Nav.Link href="/orders" className='pe-2 text-white fw-bold' style={{ textDecoration: 'underline', textDecorationColor: "white" }}>My Review</Nav.Link>
 
-                                                <Nav.Link href="/AddService" className='pe-2 text-white fw-bold' style={{ textDecoration: 'underline', textDecorationColor: "white" }}>Add Service</Nav.Link>
+                                                <Nav.Link href="/AddService" className='pe-2 text-white fw-bold' style={{ textDecoration: 'underline', textDecorationColor: "white" }}>Add Service</Nav.Link> */}
 
-                                                <FaSignOutAlt className='sign-out fw-bold my-2 fs-4 mx-2' onClick={handleLogOut}></FaSignOutAlt>
+                                                <FaSignOutAlt className='sign-out fw-bold my-2 fs-4 mx-2' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }} onClick={handleLogOut}></FaSignOutAlt>
 
                                             </>
                                             :
 
                                             <>
-                                                <Link to='/login' style={{ textDecoration: 'underline', textDecorationColor: "white" }} className='text-white fw-bold'>Login</Link>
+                                                <Link to='/login' style={{ textDecoration: 'underline', color: "EB6440", textDecorationColor: "#EB6440" }} className='fw-bold'>Login</Link>
 
                                             </>
                                     }
@@ -55,8 +66,8 @@ const NavBar = () => {
                                     </Image>
                                     : <FaUser className='mt-2'></FaUser>
                                 }
-                               
-                        </Nav> */}
+
+                            </Nav>
 
                         </Nav>
                     </Navbar.Collapse>

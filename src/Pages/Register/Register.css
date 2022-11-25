@@ -1,0 +1,63 @@
+.form {
+
+    background-color: #D6E4E5;
+}
+
+.btn-xl {
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.box2 {
+    width: 100%;
+    margin-left: 10px;
+}
+
+
+/* for-small-devices*/
+@media (min-width: 320px) and (max-width : 768px) {
+    .form {
+
+        width: 100%;
+    }
+
+    .box2 {
+        width: 100%;
+        margin-left: 10px;
+    }
+
+    * {
+        overflow-x: hidden;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+}
+
+/* for-tablet-devices */
+
+@media (min-width: 769px) and (max-width : 1200px) {
+
+    .form {
+
+        width: 100%;
+    }
+
+    .box2 {
+        display: inline;
+        flex-direction: column;
+        width: 100%;
+        margin-left: -400px;
+    }
+
+    * {
+        overflow-x: hidden;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+}
