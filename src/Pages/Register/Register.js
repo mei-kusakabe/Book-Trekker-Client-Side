@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Spinner } from 'react-bootstrap';
 import { FaCameraRetro, FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
 // import useTitle from '../hooks/useTitle';
 import "./Register.css"
@@ -9,7 +9,12 @@ const Register = () => {
     //useTitle('Register')
     const [error, setError] = useState('');
     const [accepted, setAccepted] = useState(false);
-    const { createUser, updateUserProfile, setUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile, setUser, loading } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    if (loading) {
+        return <Spinner animation='border' variant='primary' />
+    }
 
 
     const handleSubmit = event => {
@@ -22,6 +27,15 @@ const Register = () => {
         console.log(name, photoURL, email, password);
 
         createUser(email, password)
+            // .then(result => {
+            //     const user = result.user;
+            //     console.log(user);
+            //     setUser(user);
+            //     setError('');
+            //     form.reset();
+            //     handleUpdateUserProfile(name, photoURL);
+            // })
+
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -29,6 +43,9 @@ const Register = () => {
                 setError('');
                 form.reset();
                 handleUpdateUserProfile(name, photoURL);
+                // .then(() => { navigate('/'); })
+                // .catch(err => console.log(err));
+
             })
             .catch(e => {
                 console.error(e);

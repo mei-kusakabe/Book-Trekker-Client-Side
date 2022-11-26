@@ -1,9 +1,11 @@
 import React from 'react';
 import { createBrowserRouter } from "react-router-dom";
+import DashboardLayout from '../../Layout/DashboardLayout';
 import Main from '../../Layout/Main';
 import Blog from '../../Pages/Blog/Blog';
 import Categories from '../../Pages/Categories/Categories';
 import CategoryDetails from '../../Pages/Categories/CategoryDetails';
+import MyOrder from '../../Pages/Dashboard/MyOrder/MyOrder';
 import FourZeroFour from '../../Pages/FourZeroFour/FourZeroFour';
 import Home from '../../Pages/Home/Home';
 import Login from '../../Pages/Login/Login';
@@ -37,6 +39,10 @@ export const routes = createBrowserRouter([
                 element: <Categories></Categories>
             },
             {
+                path: '/categories',
+                element: <Categories></Categories>
+            },
+            {
                 path: '/allbookscategory/:CategoryId',
                 element: <PrivateRoute><CategoryDetails></CategoryDetails></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/allbookscategory/${params.CategoryId}`)
@@ -47,6 +53,34 @@ export const routes = createBrowserRouter([
             }
         ]
 
+    },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        // errorElement: <DisplayError></DisplayError>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <MyOrder></MyOrder>
+            },
+            // {
+            //     path: '/dashboard/allusers',
+            //     element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+            // },
+            // {
+            //     path: '/dashboard/adddoctor',
+            //     element: <AdminRoute><AddDoctor></AddDoctor></AdminRoute>
+            // },
+            // {
+            //     path: '/dashboard/managedoctors',
+            //     element: <AdminRoute><ManageDoctors></ManageDoctors></AdminRoute>
+            // },
+            // {
+            //     path: '/dashboard/payment/:id',
+            //     element: <Payment></Payment>,
+            //     loader: ({ params }) => fetch(`https://doctors-portal-server-rust.vercel.app/bookings/${params.id}`)
+            // },
+        ]
     },
     { path: '*', element: <FourZeroFour></FourZeroFour> }
 ])

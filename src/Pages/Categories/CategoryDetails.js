@@ -1,11 +1,73 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
+import toast from 'react-hot-toast';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../Contexts/AuthProvider';
+import ModalComponent from '../ModalComponent/ModalComponent';
 import './Categories.css'
 
 const CategoryDetails = () => {
 
     const books = useLoaderData();
+    const { user } = useContext(AuthContext)
+
+    //console.log(user);
+
+    // const { name: treatmentName, slots, price } = treatment;
+
+
+
+    // const handleBooking = event => {
+    //     event.preventDefault();
+    //     const form = event.target;
+    //     const loc = form.loc.value;
+    //     const name = user?.displayName;
+    //     const email = user?.email;
+    //     const phone = form.phone.value;
+    //     const Bookname = form.Bookname.value;
+    //     const price = form.price.value;
+
+    //     // [3, 4, 5].map((value, i) => console.log(value))
+    //     const booking = {
+    //         // appointmentDate: date,
+    //         // treatment: treatmentName,
+    //         // patient: name,
+    //         // slot,
+    //         name,
+    //         loc,
+    //         email,
+    //         phone,
+    //         price,
+    //         Bookname
+    //     }
+
+    //     console.log(booking);
+
+    // TODO: send data to the server
+    // and once data is saved then close the modal 
+    // and display success toast
+    // fetch('https://doctors-portal-server-rust.vercel.app/bookings', {
+    //     method: 'POST',
+    //     headers: {
+    //         'content-type': 'application/json'
+    //     },
+    //     body: JSON.stringify(booking)
+    // })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         console.log(data);
+    //         if (data.acknowledged) {
+    //             setTreatment(null);
+    //             toast.success('Booking confirmed');
+    //             refetch();
+    //         }
+    //         else {
+    //             toast.error(data.message);
+    //         }
+    //     })
+
+
+    //}
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -37,66 +99,15 @@ const CategoryDetails = () => {
                             <p className='px-3 card-text'><span className='fw-bold' style={{ textDecoration: 'none', color: "#497174" }}>Date Posted:</span>  {book?.PostTime.split("", 10)}</p>
                         </div>
                         {/* <button onClick={handleShow} className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow"><Link className='link' to={`/allbookscategory/${book?._id}`}>Book Now</Link></button> */}
-                        <button onClick={handleShow} className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow">Book Now</button>
-                        <>
-                            <Modal show={show} onHide={handleClose} animation={false}>
-                                <Modal.Header closeButton>
-                                    <Modal.Title>Order your Book Now!!</Modal.Title>
-                                </Modal.Header>
-                                <Modal.Body>
-                                    <Form>
-
-                                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                                            <Form.Label>Username</Form.Label>
-                                            <Form.Control type="text" placeholder="Username" disabled />
-                                        </Form.Group>
-                                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                                            <Form.Label>Email address</Form.Label>
-                                            <Form.Control type="email" placeholder="Enter email" disabled />
-                                        </Form.Group>
-
-                                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                                            <Form.Label>Book Name</Form.Label>
-                                            <Form.Control type="text" placeholder="BookName" disabled />
-                                        </Form.Group>
-
-                                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                                            <Form.Label>Price</Form.Label>
-                                            <Form.Control type="text" placeholder="Price" disabled />
-                                        </Form.Group>
-
-                                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                                            <Form.Label>Phone Number</Form.Label>
-                                            <Form.Control type="text" placeholder="Phone Number" />
-                                        </Form.Group>
-                                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                                            <Form.Label>Meeting Location</Form.Label>
-                                            <Form.Control type="text" placeholder="Meeting Location" />
-                                        </Form.Group>
-
-                                        {/* <Button variant="primary" type="submit">
-                                            Submit
-                                        </Button> */}
+                        {/* < button onClick={handleShow} className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow" > Book Now</button> */}
+                        <ModalComponent book={book.name}
+                            price={book.resalePrice}></ModalComponent>
+                    </div>
 
 
-                                    </Form>
-                                </Modal.Body>
-                                <Modal.Footer>
-                                    <Button variant="secondary" onClick={handleClose}>
-                                        Close
-                                    </Button>
-                                    <button onClick={handleClose} className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow">Save Changes</button>
-                                    {/* <Button variant="primary" onClick={handleClose}>
-                                        Save Changes
-                                    </Button> */}
-                                </Modal.Footer>
-
-                            </Modal>
-
-                        </>
-                    </div>)
+                    )
                 }
-            </div>
+            </div >
         </div >
     );
 };

@@ -4,6 +4,7 @@ import { FaSignOutAlt, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import './NavBar.css'
+import './../../../Layout/DashboardLayout'
 
 const NavBar = () => {
 
@@ -39,6 +40,8 @@ const NavBar = () => {
                                         user?.uid ?
                                             <>
                                                 <span className='fw-bold my-2 mx-2' style={{ textDecoration: 'none', color: "#EB6440" }}>{user?.displayName}</span>
+
+                                                <Nav.Link href="/dashboard" className='pe-2 fw-bold' style={{ textDecoration: 'none', color: "#EB6440" }}>DashBoard</Nav.Link>
 
                                                 {/* <Nav.Link href="/orders" className='pe-2 text-white fw-bold' style={{ textDecoration: 'underline', textDecorationColor: "white" }}>My Review</Nav.Link>
 

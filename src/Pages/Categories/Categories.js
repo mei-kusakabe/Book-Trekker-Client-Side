@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Contexts/AuthProvider';
 import './Categories.css'
 
 const Categories = () => {
     //  useTitle('Services')
     const [categories, setCategories] = useState([]);
-    // const { loading } = useContext(AuthContext);
+    const { loading } = useContext(AuthContext);
     useEffect(() => {
         fetch('http://localhost:5000/categories')
             .then(res => res.json())
             .then(data => setCategories(data))
     }, []);
 
-    // if (loading) {
-    //     return <Spinner animation='border' variant='primary' />
-    // }
+    if (loading) {
+        return <Spinner animation='border' variant='primary' />
+    }
 
 
     return (

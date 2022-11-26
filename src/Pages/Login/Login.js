@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Button, ButtonGroup, Form } from 'react-bootstrap';
+import { Button, ButtonGroup, Form, Spinner } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
 // import useTitle from '../hooks/useTitle';
@@ -11,13 +11,17 @@ const Login = () => {
 
     // useTitle('Login')
 
-    const { providerLogin, setUser, setLoading, signIn } = useContext(AuthContext);
+    const { providerLogin, setUser, setLoading, signIn, loading } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
     const googleProvider = new GoogleAuthProvider();
+
+    if (loading) {
+        return <Spinner animation='border' variant='primary' />
+    }
 
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
