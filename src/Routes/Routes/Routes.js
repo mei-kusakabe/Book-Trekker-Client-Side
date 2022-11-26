@@ -5,6 +5,7 @@ import Main from '../../Layout/Main';
 import Blog from '../../Pages/Blog/Blog';
 import Categories from '../../Pages/Categories/Categories';
 import CategoryDetails from '../../Pages/Categories/CategoryDetails';
+import AddProduct from '../../Pages/Dashboard/AddProduct/AddProduct';
 import MyOrder from '../../Pages/Dashboard/MyOrder/MyOrder';
 import FourZeroFour from '../../Pages/FourZeroFour/FourZeroFour';
 import Home from '../../Pages/Home/Home';
@@ -67,10 +68,10 @@ export const routes = createBrowserRouter([
             //     path: '/dashboard/allusers',
             //     element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             // },
-            // {
-            //     path: '/dashboard/adddoctor',
-            //     element: <AdminRoute><AddDoctor></AddDoctor></AdminRoute>
-            // },
+            {
+                path: '/dashboard/addproduct',
+                element: <AddProduct></AddProduct>
+            },
             // {
             //     path: '/dashboard/managedoctors',
             //     element: <AdminRoute><ManageDoctors></ManageDoctors></AdminRoute>

@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import './MyOrder.css'
 
 const MyOrder = () => {
 
@@ -38,32 +39,28 @@ const MyOrder = () => {
         <div>
             my Order
 
-            <table className='mx-auto text-black'>
-                <tr>
-                    <th>Title</th>
-                    <th>Pic</th>
-                    <th>Price</th>
-                    <th>PayMent</th>
-                </tr>
+            <div className='order-all m-5 border-0'>
+                {
+                    bookings.map((booking, i) => <div className='order m-5 text-center mx-auto border-1 p-0 w-25 shadow d-flex'
+                        key={i}>
 
-                <tbody>
-                    {
-                        bookings.map((booking, i) => <tr>
-                            <th>{i + 1}</th>
-                            <th><img className='rounded-circle h-25 w-25' src={booking.img} alt="" /></th>
-                            <th>{booking.Bookname}</th>
-                            <th>{booking.price}</th>
-                            <th><button>pay</button></th>
-
-                            {/* <td></td>
-                            <td></td> */}
-                        </tr>)
-                    }
+                        <div>
+                            <img src={booking.img} alt="" />
+                        </div>
+                        <div>
+                            <h5 className='p-3 w-100'>{booking.Bookname} </h5>
+                            <p className='p-3 text '>  {booking.price}</p>
+                            <button className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow">pay</button>
+                        </div>
 
 
+                    </div>
 
-                </tbody>
-            </table>
+
+                    )
+                }
+
+            </div>
         </div>
     );
 };
