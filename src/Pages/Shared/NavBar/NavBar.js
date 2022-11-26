@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import { Container, Dropdown, Image, Nav, Navbar } from 'react-bootstrap';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
 import { FaSignOutAlt, FaUser } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import './NavBar.css'
 import './../../../Layout/DashboardLayout'
@@ -9,15 +11,60 @@ import './../../../Layout/DashboardLayout'
 const NavBar = () => {
 
     const { user, logOut } = useContext(AuthContext);
-    console.log(user?.uid);
+
+
+
+    // console.log(user?.usertype);
 
     const handleLogOut = () => {
         logOut()
             .then(() => { })
             .catch(error => console.error(error))
     }
+
+
+    //const axios = require('axios'); // legacy way
+
+    // Make a request for a user with a given ID
+    // axios.get(`http://localhost:5000/users?email=${user?.email}`)
+    //     .then(function (response) {
+    //         // handle success
+    //         console.log(response.data);
+    //         // userC = response.data;
+    //         //return data;
+    //     })
+    //     .catch(function (error) {
+    //         // handle error
+    //         console.log(error);
+    //     })
+    //     .finally(function () {
+    //         // always executed
+    //     });
+
+    //const services = useLoaderData();
+    //console.log(services);
+
+
+    const url = `http://localhost:5000/users?email=${user?.email}`;
+
+    const { data: usersC = [] } = useQuery({
+        queryKey: ['usersC', user?.email],
+        queryFn: async () => {
+            const res = await fetch(url);
+            const data = await res.json();
+            // userC = data;
+            return data;
+        }
+    })
+
+    console.log(usersC);
+
+
     return (
         <div className='header'>
+
+
+
             <Navbar collapseOnSelect className='nav-bg text-white' expand="lg" variant="light">
                 <Container>
                     <div className=''>
@@ -34,6 +81,36 @@ const NavBar = () => {
                             <Nav.Link href="/blog" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Blog</Nav.Link>
                             <Nav.Link href="/photogallery" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Photo Gallery</Nav.Link>
                             <Nav.Link href="/contact" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Contact</Nav.Link>
+                            <Nav>
+                                {
+                                    usersC.map((userD, i) => <div
+                                        key={i}
+                                        usertype={userD.usertype}>
+                                        {userD.usertype === "Buyer" ?
+                                            <Nav.Link href="/dashboard" className='px-3 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Order</Nav.Link>
+                                            :
+                                            <>
+                                            </>
+
+                                        }
+
+                                        {
+                                            userD.usertype === "Seller" ?
+                                                <>
+                                                    <Nav.Link href="/dashboard/addproduct" className='pe-2 px-5 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Add Product</Nav.Link>
+                                                    <Nav.Link href="/photogallery" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>My Product</Nav.Link>
+                                                </>
+                                                :
+                                                <>
+
+                                                </>
+
+                                        }
+                                    </div>
+                                    )
+
+                                }
+                            </Nav>
 
                             <Nav>
                                 <>
@@ -71,7 +148,11 @@ const NavBar = () => {
                                                 {/* <Link to='/login' style={{ textDecoration: 'underline', color: "EB6440", textDecorationColor: "#EB6440" }} className='fw-bold'>Login</Link> */}
 
                                             </>
+
+
                                     }
+
+
 
 
                                 </>
@@ -84,6 +165,25 @@ const NavBar = () => {
                                     </Image>
                                     : <FaUser className='mt-2'></FaUser>
                                 }
+
+
+
+
+
+
+                                {/* {
+
+                                    userD?.usertype === "Buyer" ?
+
+                                        <Nav.Link href="/photogallery" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Order</Nav.Link>
+                                        :
+                                        <>
+                                            <Nav.Link href="/contact" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Add Product</Nav.Link>
+                                            <Nav.Link href="/photogallery" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>My Product</Nav.Link>
+
+                                        </>
+
+                                } */}
 
                             </Nav>
 

@@ -51,7 +51,9 @@ export const routes = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
-            }
+            },
+
+
         ]
 
     },
@@ -72,6 +74,12 @@ export const routes = createBrowserRouter([
                 path: '/dashboard/addproduct',
                 element: <AddProduct></AddProduct>
             },
+
+            // {
+            //     path: '/users/:email',
+            //     element: <Na></NavBar>,
+            //     loader: ({ params }) => fetch(`http://localhost:5000/users/${params.email}`)
+            // }
             // {
             //     path: '/dashboard/managedoctors',
             //     element: <AdminRoute><ManageDoctors></ManageDoctors></AdminRoute>
