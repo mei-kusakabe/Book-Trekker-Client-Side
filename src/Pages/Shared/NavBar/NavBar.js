@@ -9,6 +9,7 @@ import './../../../Layout/DashboardLayout'
 const NavBar = () => {
 
     const { user, logOut } = useContext(AuthContext);
+    console.log(user?.uid);
 
     const handleLogOut = () => {
         logOut()
@@ -22,13 +23,13 @@ const NavBar = () => {
                     <div className=''>
                         <span>
                             <img src="https://cdn-icons-png.flaticon.com/512/1164/1164713.png" alt="Logo" width="50" height="45" className="d-inline-block align-text-center" />
-                            <Navbar.Brand href="/home" className='fw-bold title'>Book Trekker</Navbar.Brand>
+                            <Navbar.Brand href="/" className='fw-bold title'>Book Trekker</Navbar.Brand>
                         </span>
                     </div>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className='ms-auto'>
-                            <Nav.Link href="/home" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Home</Nav.Link>
+                            <Nav.Link href="/" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Home</Nav.Link>
                             <Nav.Link href="/services" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Services</Nav.Link>
                             <Nav.Link href="/blog" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Blog</Nav.Link>
                             <Nav.Link href="/photogallery" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Photo Gallery</Nav.Link>

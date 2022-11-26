@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Button, ButtonGroup, Form, Spinner } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
-// import useTitle from '../hooks/useTitle';
+//import useTitle from '../hooks/useTitle';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { FaGoogle, FaEnvelope, FaLock } from "react-icons/fa";
 import './Login.css'
@@ -11,7 +11,11 @@ const Login = () => {
 
     // useTitle('Login')
 
-    const { providerLogin, setUser, setLoading, signIn, loading } = useContext(AuthContext);
+
+    const { loading } = useContext(AuthContext);
+
+
+    const { providerLogin, setUser, setLoading, signIn } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -28,9 +32,40 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 setUser(user);
-                console.log(user);
+                const currentUser = {
+                    email: user.email
+                }
+
+                console.log(currentUser);
+
+                setError('');
+
+                // get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        // local storage is the easiest but not the best place to store jwt token
+                        localStorage.setItem('book-trekker-token', data.token);
+                        navigate(from, { replace: true });
+                    });
+
             })
-            .catch(error => console.error(error))
+
+            .catch(error => {
+                console.error(error)
+                setError(error.message);
+            })
+
+            .finally(() => {
+                setLoading(false);
+            });
     }
 
 
@@ -44,19 +79,45 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+
+                const currentUser = {
+                    email: user.email
+                }
+
+                console.log(currentUser);
+
                 form.reset();
                 setError('');
-                navigate(from, { replace: true })
+
+
+                // get jwt token
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        // local storage is the easiest but not the best place to store jwt token
+                        localStorage.setItem('book-trekker-token', data.token);
+                        navigate(from, { replace: true });
+                    });
 
             })
+
             .catch(error => {
                 console.error(error)
                 setError(error.message);
             })
+
             .finally(() => {
                 setLoading(false);
-            })
+            });
     }
+
 
     return (
 
@@ -87,7 +148,8 @@ const Login = () => {
                                     <Button onClick={handleGoogleSignIn} className='mb-2 fw-bold' variant="outline-primary"> <FaGoogle></FaGoogle> Login with Google</Button>
                                 </ButtonGroup>
                             </div>
-                            <p className='mt-3'>Need an Account? <Link to="/register"> <span className='fw-bold'>Register</span></Link></p>
+                            <p className='mt-3'>Need an Account? </p>
+                            <Link to="/register"> <span className='fw-bold text-black'> Click here to Register</span></Link>
                         </div>
                     </Form>
                 </div>

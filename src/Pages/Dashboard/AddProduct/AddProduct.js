@@ -21,8 +21,6 @@ const AddProduct = () => {
         const YearofPurchase = form.YearofPurchase.value;
         const yearofuse = form.yearofuse.value;
 
-        //const description = form.description.value;
-        // const price = form.price.value;
 
         const product = {
             title: title,
@@ -91,14 +89,8 @@ const AddProduct = () => {
                     <input name="SellerName" type="text" placeholder="Seller Name" className="input border shadow mx-auto p-3 rounded" />
                     <input name="phone" type="text" placeholder="Phone No" className="input border shadow mx-auto p-3 rounded" />
                     <label for="start">Post Time:</label>
-                    {/* <input type="date" id="start" name="trip-start"
-                        value="2018-07-22"
-                        min="2018-01-01" max="2018-12-31"></input> */}
                     <input type="date" name="PostTime" min="2018-01-01" max="2024-12-31" placeholder="Post Time" className="input border shadow mx-auto p-3 rounded" />
                     <input name="location" type="text" placeholder="Location" className="input border shadow mx-auto p-3 rounded" />
-
-                    {/* <input name="phone" type="text" placeholder="Phone No" className="input border shadow mx-auto p-3 rounded" />
-                    <textarea name="description" className="input border shadow mx-auto p-3 rounded w-50" placeholder="Description" required></textarea> */}
 
                 </div>
                 <button className="button1 px-5  mx-3 fw-bold text-white my-3 border shadow">Add Product</button>

@@ -1,22 +1,19 @@
 import React, { useContext, useState } from 'react';
 import { Button, Form, Spinner } from 'react-bootstrap';
 import { FaCameraRetro, FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
-// import useTitle from '../hooks/useTitle';
+//import useTitle from '../hooks/useTitle';
 import "./Register.css"
 const Register = () => {
-    //useTitle('Register')
+    // useTitle('Register')
     const [error, setError] = useState('');
-    const [accepted, setAccepted] = useState(false);
+    // const [accepted, setAccepted] = useState(false);
     const { createUser, updateUserProfile, setUser, loading } = useContext(AuthContext);
-    const navigate = useNavigate();
 
     if (loading) {
         return <Spinner animation='border' variant='primary' />
     }
-
-
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -27,15 +24,6 @@ const Register = () => {
         console.log(name, photoURL, email, password);
 
         createUser(email, password)
-            // .then(result => {
-            //     const user = result.user;
-            //     console.log(user);
-            //     setUser(user);
-            //     setError('');
-            //     form.reset();
-            //     handleUpdateUserProfile(name, photoURL);
-            // })
-
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -43,9 +31,6 @@ const Register = () => {
                 setError('');
                 form.reset();
                 handleUpdateUserProfile(name, photoURL);
-                // .then(() => { navigate('/'); })
-                // .catch(err => console.log(err));
-
             })
             .catch(e => {
                 console.error(e);
@@ -64,9 +49,9 @@ const Register = () => {
             .catch(error => console.error(error));
     }
 
-    const handleAccepted = event => {
-        setAccepted(event.target.checked)
-    }
+    // const handleAccepted = event => {
+    //     setAccepted(event.target.checked)
+    // }
 
     return (
 
@@ -97,20 +82,13 @@ const Register = () => {
                                     <input type="password" className="form-control" name="password" placeholder="Password" required />
                                 </div>
 
-                                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                                    <Form.Check
-                                        type="checkbox"
-                                        onClick={handleAccepted}
-                                        label={<>Accept <Link to="/terms">Terms and conditions</Link></>} />
-                                </Form.Group>
-
-                                <Button variant="primary" className="btn-xl fw-bold" type="submit" disabled={!accepted}> Register</Button>
+                                <Button variant="primary" className="btn-xl fw-bold" type="submit" > Register</Button>
                                 <Form.Text className="text-danger">
                                     {error}
                                 </Form.Text>
                                 <hr />
 
-                                <p className='mt-3'>Already an User? <Link to="/login"> <span className='fw-bold'>Login</span></Link></p>
+                                <p className='mt-3'>Already an User? <Link to="/login"> <span className='fw-bold text-black'>Click here to Login</span></Link></p>
                             </div>
                         </Form>
                     </div>
