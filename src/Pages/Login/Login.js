@@ -3,6 +3,8 @@ import { Button, ButtonGroup, Form, Spinner } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
 //import useTitle from '../hooks/useTitle';
+import { Navigate } from 'react-router-dom';
+
 import { GoogleAuthProvider } from 'firebase/auth';
 import { FaGoogle, FaEnvelope, FaLock } from "react-icons/fa";
 import './Login.css'
@@ -10,12 +12,12 @@ import './Login.css'
 const Login = () => {
 
     // useTitle('Login')
-
-
+    //const { user } = useContext(AuthContext);
     const { loading } = useContext(AuthContext);
+    const usertype = "Buyer";
 
-
-    const { providerLogin, setUser, setLoading, signIn } = useContext(AuthContext);
+    //const {user} =
+    const { providerLogin, setUser, setLoading, signIn, updateUserProfile } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -31,6 +33,8 @@ const Login = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
+                const { name, email, photoURL } = user;
+
                 setUser(user);
                 const currentUser = {
                     email: user.email
@@ -39,6 +43,15 @@ const Login = () => {
                 console.log(currentUser);
 
                 setError('');
+
+                const profile = {
+                    displayName: name,
+                    photoURL: photoURL
+                }
+
+                updateUserProfile(profile)
+                    .then(() => { saveUser(name, email, photoURL, usertype) })
+                    .catch(error => console.error(error));
 
                 // get jwt token
                 fetch('http://localhost:5000/jwt', {
@@ -116,6 +129,31 @@ const Login = () => {
             .finally(() => {
                 setLoading(false);
             });
+    }
+
+    const saveUser = (name, email, photoURL, usertype) => {
+        const user = { name, email, photoURL, usertype };
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                Navigate('/');
+                // if(data.acknowledged){
+                //     form.reset();
+                //     setShow(false);
+                //    toast('argvergaerg')
+
+                // }
+            })
+            .catch(error => console.error(error));
+
     }
 
 

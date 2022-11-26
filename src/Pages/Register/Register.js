@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Button, Form, Spinner } from 'react-bootstrap';
 import { FaCameraRetro, FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
 //import useTitle from '../hooks/useTitle';
 import "./Register.css"
@@ -21,6 +21,7 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
+        const usertype = form.usertype.value;
         console.log(name, photoURL, email, password);
 
         createUser(email, password)
@@ -28,6 +29,7 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 setUser(user);
+                //toast
                 setError('');
                 form.reset();
                 handleUpdateUserProfile(name, photoURL);
@@ -36,18 +38,50 @@ const Register = () => {
                 console.error(e);
                 setError(e.message);
             });
-    }
 
-    const handleUpdateUserProfile = (name, photoURL) => {
-        const profile = {
-            displayName: name,
-            photoURL: photoURL
+        const handleUpdateUserProfile = (name, photoURL) => {
+            const profile = {
+                displayName: name,
+                photoURL: photoURL
+            }
+
+            updateUserProfile(profile)
+                .then(() => { saveUser(name, email, photoURL, usertype) })
+                .catch(error => console.error(error));
         }
 
-        updateUserProfile(profile)
-            .then(() => { })
-            .catch(error => console.error(error));
     }
+
+
+
+
+    const saveUser = (name, email, photoURL, usertype) => {
+        const user = { name, email, photoURL, usertype };
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                Navigate('/');
+                // if(data.acknowledged){
+                //     form.reset();
+                //     setShow(false);
+                //    toast('argvergaerg')
+
+                // }
+            })
+            .catch(error => console.error(error));
+
+    }
+
+
+
 
     // const handleAccepted = event => {
     //     setAccepted(event.target.checked)
@@ -59,12 +93,13 @@ const Register = () => {
         <div className="container-fluid vh-100">
             <div className="">
                 <div className="rounded d-flex justify-content-center">
-                    <div className="form col-md-4 col-sm-12 shadow-lg p-5 rounded  mt-3">
+                    <div className="form col-md-4 col-sm-12 shadow-lg p-5 rounded  mt-2">
                         <div className="text-center">
                             <h3 className="text-white fw-bold fs-2">Welcome to Register Page!!</h3>
                         </div>
                         <Form onSubmit={handleSubmit} className="d-flex flex-column justify-content-center align-items-center border shadow-lg rounded-3 bg-light ">
                             <div className="p-4">
+
                                 <div className="input-group mb-3">
                                     <span className="input-group-text bg-light"><FaUser></FaUser> </span>
                                     <input type="text" className="form-control" name="name" placeholder="Full Name" />
@@ -82,7 +117,14 @@ const Register = () => {
                                     <input type="password" className="form-control" name="password" placeholder="Password" required />
                                 </div>
 
-                                <Button variant="primary" className="btn-xl fw-bold" type="submit" > Register</Button>
+                                <label for="usertype" className='input-group-text px-3' >Register as:</label>
+                                <select id="usertype" name="usertype" className="input border shadow mx-auto px-3 rounded w-100 h-25" size="1" required>
+                                    <option value="Buyer">Buyer</option>
+                                    <option value="Seller">Seller</option>
+                                </select>
+                                <br></br>
+
+                                <Button variant="primary" className="btn-xl fw-bold mt-3" type="submit" > Register</Button>
                                 <Form.Text className="text-danger">
                                     {error}
                                 </Form.Text>
