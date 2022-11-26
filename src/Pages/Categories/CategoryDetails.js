@@ -101,7 +101,9 @@ const CategoryDetails = () => {
                         {/* <button onClick={handleShow} className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow"><Link className='link' to={`/allbookscategory/${book?._id}`}>Book Now</Link></button> */}
                         {/* < button onClick={handleShow} className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow" > Book Now</button> */}
                         <ModalComponent book={book.name}
-                            price={book.resalePrice}></ModalComponent>
+                            price={book.resalePrice}
+                            img={book.pic}
+                        ></ModalComponent>
                     </div>
 
 

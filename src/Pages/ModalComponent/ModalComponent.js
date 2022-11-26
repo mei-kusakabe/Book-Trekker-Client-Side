@@ -4,12 +4,13 @@ import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
 
-const ModalComponent = ({ book, price }) => {
+const ModalComponent = ({ book, price, img }) => {
 
 
-    // console.log("book:", book);
+    console.log(img);
     const { user } = useContext(AuthContext);
     //const books = useLoaderData();
+
 
     const handleBooking = event => {
         event.preventDefault();
@@ -22,6 +23,7 @@ const ModalComponent = ({ book, price }) => {
         const price = form.price.value;
 
 
+
         // const review = {
         //     title: title,
         //     price: price,
@@ -31,25 +33,26 @@ const ModalComponent = ({ book, price }) => {
         // }
 
 
-        const booking = {
+        const bookings = {
 
             userName: name,
             Location: loc,
             email: email,
             phone: phone,
             price: price,
-            Bookname: Bookname
+            Bookname: Bookname,
+            img: img
         }
 
-        console.log(booking);
+        console.log(bookings);
 
 
-        fetch('http://localhost:5000/booking', {
+        fetch('http://localhost:5000/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(booking)
+            body: JSON.stringify(bookings)
         })
             .then(res => res.json())
             .then(data => {
