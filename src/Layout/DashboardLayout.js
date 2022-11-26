@@ -73,7 +73,62 @@ const DashboardLayout = () => {
 
                 <div className="container text-center">
 
-                    <h1 className="text-uppercase">www.youtube.com/decomtvs</h1>
+                    <table className='mx-auto'>
+                        <tr>
+                            <th>Features</th>
+                            <th>React</th>
+                            <th>Angular</th>
+                            <th>Vue</th>
+                        </tr>
+                        <tr>
+                            <td>Framework Size</td>
+                            <td>97.5k</td>
+                            <td>143k</td>
+                            <td>58.8k</td>
+                        </tr>
+                        <tr>
+                            <td>Programming Language</td>
+                            <td>Javascript</td>
+                            <td>Typescript</td>
+                            <td>Javascript</td>
+                        </tr>
+                        <tr>
+                            <td>UI Component</td>
+                            <td>React UI Tools</td>
+                            <td>In-built material techstack</td>
+                            <td>Component Libraries</td>
+                        </tr>
+                        <tr>
+                            <td>Architechture</td>
+                            <td>Component Based</td>
+                            <td>Component Based</td>
+                            <td>Component Based</td>
+                        </tr>
+                        <tr>
+                            <td>Learning Curve</td>
+                            <td>Moderate</td>
+                            <td>Steep</td>
+                            <td>Moderate</td>
+                        </tr>
+                        <tr>
+                            <td>Syntax</td>
+                            <td>Virtual DOM</td>
+                            <td>Real DOM</td>
+                            <td>Virtual DOM</td>
+                        </tr>
+                        <tr>
+                            <td>Scalability</td>
+                            <td>Component Based Approach</td>
+                            <td>Modular Development Structure</td>
+                            <td>Template Based Syntax</td>
+                        </tr>
+                        <tr>
+                            <td>Migrations</td>
+                            <td>React Codemod Script</td>
+                            <td>API Upgrade</td>
+                            <td>Migration Helper Tool</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>

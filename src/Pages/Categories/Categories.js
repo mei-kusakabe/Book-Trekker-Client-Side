@@ -4,15 +4,34 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
 import './Categories.css'
 
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+
 const Categories = () => {
+
+
     //  useTitle('Services')
-    const [categories, setCategories] = useState([]);
+    // const [categories, setCategories] = useState([]);
     const { loading } = useContext(AuthContext);
-    useEffect(() => {
-        fetch('http://localhost:5000/categories')
-            .then(res => res.json())
-            .then(data => setCategories(data))
-    }, []);
+
+
+    // implemented  react query 
+
+    const { data: categories = [] } = useQuery({
+        queryKey: ['categories'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/categories');
+            const data = await res.json();
+            return data;
+        }
+    })
+
+
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/categories')
+    //         .then(res => res.json())
+    //         .then(data => setCategories(data))
+    // }, []);
+
 
     if (loading) {
         return <Spinner animation='border' variant='primary' />
