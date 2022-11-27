@@ -13,6 +13,7 @@ import FourZeroFour from '../../Pages/FourZeroFour/FourZeroFour';
 import Home from '../../Pages/Home/Home';
 import Login from '../../Pages/Login/Login';
 import Register from '../../Pages/Register/Register';
+import AdminRoute from '../AdminRoute/AdminRoute';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 
@@ -64,18 +65,18 @@ export const routes = createBrowserRouter([
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         // errorElement: <DisplayError></DisplayError>,
         children: [
-            // {
-            //     path: '/dashboard',
-            //     element: <MyOrder></MyOrder>
-            // },
+            {
+                path: '/dashboard/myorder',
+                element: <MyOrder></MyOrder>
+            },
 
             {
                 path: '/dashboard/allbuyer',
-                element: <AllBuyer></AllBuyer>
+                element: <AdminRoute><AllBuyer></AllBuyer></AdminRoute>
             },
             {
                 path: '/dashboard/allseller',
-                element: <AllSellers></AllSellers>
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
             // {
             //     path: '/dashboard/allusers',

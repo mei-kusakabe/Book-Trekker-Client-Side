@@ -30,6 +30,8 @@ const AllBuyer = () => {
                     <th>Email</th>
                     <th>Phone</th>
                     <th>location</th>
+                    <th>Delete Buyer</th>
+
                 </tr>
 
                 <tbody>
@@ -40,6 +42,8 @@ const AllBuyer = () => {
                             <td>{user.email}</td>
                             <td>01894321111</td>
                             <td>Chattogram</td>
+                            <td><Link className="button1 fw-bold my-2 border shadow" to="/">Delete</Link></td>
+
                         </tr>)
                     }
                 </tbody>

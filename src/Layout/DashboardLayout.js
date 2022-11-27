@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import useAdmin from '../hooks/useAdmin';
 import { AuthContext } from '../Pages/Contexts/AuthProvider';
 import Navbar from '../Pages/Shared/NavBar/NavBar';
 import './DashboardLayout.css'
@@ -8,6 +9,8 @@ import './DashboardLayout.css'
 const DashboardLayout = () => {
 
     const { user } = useContext(AuthContext);
+    const [isAdmin] = useAdmin(user?.email)
+
     //const [isAdmin] = useAdmin(user?.email)
     return (
         <div>
@@ -73,27 +76,33 @@ const DashboardLayout = () => {
                 </div> */}
 
 
-                <div className="text-start w-25 m-5">
+                <div className="text-start w-25 ms-5">
                     <table className='mx-auto text-black  shadow'>
                         <tr>
-                            <th>Title</th>
+                            {/* <th>Title</th> */}
                             <th>Visit </th>
                         </tr>
                         <tbody className=''>
                             <tr>
-                                <td>{1}</td>
                                 {/* <th><button href="/dashboard/addproduct" className="button1 px-5  mx-3 fw-bold my-2 border shadow">My Order</button></th> */}
-                                <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/addproduct">My Order</Link></td>
+                                <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/myorder">My Order</Link></td>
 
                             </tr>
-                            <tr>
-                                <td>{2}</td>
-                                <td><Link className="button1  fw-bold my-2 border shadow" to="/dashboard/allseller">All Seller</Link></td>
-                            </tr>
-                            <tr>
-                                <td>{3}</td>
-                                <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/allbuyer">All Buyer</Link></td>
-                            </tr>
+
+                            {
+                                isAdmin && <>
+                                    <tr>
+                                        {/* <td>{2}</td> */}
+                                        <td><Link className="button1  fw-bold my-2 border shadow" to="/dashboard/allseller">All Seller</Link></td>
+                                    </tr>
+                                    <tr>
+                                        {/* <td>{3}</td> */}
+                                        <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/allbuyer">All Buyer</Link></td>
+                                    </tr>
+                                </>
+                            }
+
+
                         </tbody>
                     </table>
                 </div>

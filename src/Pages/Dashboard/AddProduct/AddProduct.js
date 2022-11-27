@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const AddProduct = () => {
+
+    const { user } = useContext(AuthContext);
+
 
     const handleProduct = event => {
         event.preventDefault();
@@ -93,7 +97,7 @@ const AddProduct = () => {
                     <input name="yearofuse" type="text" placeholder="Year of Use" className="input border shadow mx-auto p-3 rounded" />
                     <input name="resalePrice" type="text" placeholder="Resale Price" className="input border shadow mx-auto p-3 rounded" />
                     <input name="originalPrice" type="text" placeholder="Original Price" className="input border shadow mx-auto p-3 rounded" />
-                    <input name="SellerName" type="text" placeholder="Seller Name" className="input border shadow mx-auto p-3 rounded" />
+                    <input name="SellerName" type="text" defaultValue={user?.displayName} placeholder="Seller Name" className="input border shadow mx-auto p-3 rounded" />
                     <input name="phone" type="text" placeholder="Phone No" className="input border shadow mx-auto p-3 rounded" />
                     <label for="start">Post Time:</label>
                     <input type="date" name="PostTime" min="2018-01-01" max="2024-12-31" placeholder="Post Time" className="input border shadow mx-auto p-3 rounded" />

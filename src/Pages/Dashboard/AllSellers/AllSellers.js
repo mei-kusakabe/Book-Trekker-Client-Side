@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 
 const AllSellers = () => {
@@ -22,21 +23,40 @@ const AllSellers = () => {
 
     const url = `http://localhost:5000/userstype?usertype=Seller`;
 
-    const [users, setuser] = useState([]);
+    // const [users, setuser] = useState([]);
 
-    useEffect(() => {
-        axios.get(url).then((response) => {
-            setuser(response.data);
-        });
-    }, []);
+    // useEffect(() => {
+    //     axios.get(url).then((response) => {
+    //         setuser(response.data);
+    //     });
+    // }, []);
 
-    // The all - sellers route will have a name, email address, 
-    // delete button, and verify button.Admin will be able to verify a
-    //  seller.When clicked on the verify button, the seller's status will 
-    //  change from unverified to verified(show a blue tick when the seller 
-    //     is verified), and this status will be shown on the products added
-    //      by a verified seller.
 
+    const { data: users = [], refetch } = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            const res = await fetch(url);
+            const data = await res.json();
+            return data;
+        }
+    });
+
+    const handleVerifySeller = id => {
+        fetch(`http://localhost:5000/allusers/seller/${id}`, {
+            //method: 'PUT'
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('book-trekker-token')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    toast.success('Seller successfully Verified.')
+                    refetch();
+                }
+            })
+    }
 
     /// console.log(users);
     return (
@@ -47,25 +67,41 @@ const AllSellers = () => {
                     <th>Name</th>
                     <th>Email</th>
                     <th>Verify Seller</th>
-                    <th>Delete Seller</th>
                     <th>Seller Status</th>
+                    <th>Delete Seller</th>
                 </tr>
 
                 <tbody>
                     {
-                        users.map((user, i) => <tr>
+                        users.map((user, i) => <tr key={user._id}>
                             <th>{i + 1}</th>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
-                            <td><Link className="button1 fw-bold my-2 border shadow" to="/">Verify</Link></td>
+                            <td><button onClick={() => handleVerifySeller(user._id)} className="button1 fw-bold my-2 border shadow">Verify</button></td>
+                            <td>
+
+                                {
+                                    user?.role === 'seller' ?
+                                        <td className='text-center ms-5'>
+                                            Verified
+                                        </td>
+                                        :
+
+                                        <td className='text-center'>
+                                            Not Verified
+                                        </td>
+
+                                }
+
+                            </td>
+
                             <td><Link className="button1 fw-bold my-2 border shadow" to="/">Delete</Link></td>
-                            <td>Unverified</td>
 
                         </tr>)
                     }
                 </tbody>
             </table>
-        </div>
+        </div >
     );
 };
 
