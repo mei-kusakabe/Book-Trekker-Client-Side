@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const AllBuyer = () => {
@@ -21,33 +22,30 @@ const AllBuyer = () => {
     console.log(users);
     return (
         <div>
+
             <table className='mx-auto text-black'>
                 <tr>
-                    <th>Title</th>
+                    <th>No.</th>
                     <th>Name</th>
                     <th>Email</th>
-                    {/* <th>PayMent</th> */}
+                    <th>Phone</th>
+                    <th>location</th>
                 </tr>
 
                 <tbody>
                     {
                         users.map((user, i) => <tr>
                             <th>{i + 1}</th>
-                            {/* <th><img className='rounded-circle h-25 w-25' src={booking.img} alt="" /></th> */}
-                            <th>{user.name}</th>
-                            <th>{user.email}</th>
-                            {/* //  <th><button>pay</button></th> */}
-
-                            {/* <td></td>
-                            <td></td> */}
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
+                            <td>01894321111</td>
+                            <td>Chattogram</td>
                         </tr>)
                     }
-
-
-
                 </tbody>
             </table>
         </div>
+
     );
 };
 

@@ -64,10 +64,10 @@ export const routes = createBrowserRouter([
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         // errorElement: <DisplayError></DisplayError>,
         children: [
-            {
-                path: '/dashboard',
-                element: <MyOrder></MyOrder>
-            },
+            // {
+            //     path: '/dashboard',
+            //     element: <MyOrder></MyOrder>
+            // },
 
             {
                 path: '/dashboard/allbuyer',

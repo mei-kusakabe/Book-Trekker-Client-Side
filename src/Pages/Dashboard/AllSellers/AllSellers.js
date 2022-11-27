@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 const AllSellers = () => {
@@ -29,34 +30,39 @@ const AllSellers = () => {
         });
     }, []);
 
+    // The all - sellers route will have a name, email address, 
+    // delete button, and verify button.Admin will be able to verify a
+    //  seller.When clicked on the verify button, the seller's status will 
+    //  change from unverified to verified(show a blue tick when the seller 
+    //     is verified), and this status will be shown on the products added
+    //      by a verified seller.
+
 
     /// console.log(users);
     return (
         <div>
             <table className='mx-auto text-black'>
                 <tr>
-                    <th>Title</th>
+                    <th>No.</th>
                     <th>Name</th>
                     <th>Email</th>
-                    {/* <th>PayMent</th> */}
+                    <th>Verify Seller</th>
+                    <th>Delete Seller</th>
+                    <th>Seller Status</th>
                 </tr>
 
                 <tbody>
                     {
                         users.map((user, i) => <tr>
                             <th>{i + 1}</th>
-                            {/* <th><img className='rounded-circle h-25 w-25' src={booking.img} alt="" /></th> */}
-                            <th>{user.name}</th>
-                            <th>{user.email}</th>
-                            {/* //  <th><button>pay</button></th> */}
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
+                            <td><Link className="button1 fw-bold my-2 border shadow" to="/">Verify</Link></td>
+                            <td><Link className="button1 fw-bold my-2 border shadow" to="/">Delete</Link></td>
+                            <td>Unverified</td>
 
-                            {/* <td></td>
-                            <td></td> */}
                         </tr>)
                     }
-
-
-
                 </tbody>
             </table>
         </div>

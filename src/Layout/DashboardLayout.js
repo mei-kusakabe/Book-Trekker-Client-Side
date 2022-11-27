@@ -15,10 +15,11 @@ const DashboardLayout = () => {
             <div className="drawer drawer-mobile">
 
                 <Outlet></Outlet>
-                {/* <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" /> */}
                 <div className="drawer-content">
 
                 </div>
+                {/* <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" /> */}
+
                 {/* <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 text-base-content">
@@ -36,7 +37,7 @@ const DashboardLayout = () => {
 
                 </div> */}
 
-                <nav className="navbar navbar-light bg-light shadow">
+                {/* <nav className="navbar navbar-light bg-light shadow">
                     <div className="container-fluid">
                         <span className="navbar-brand mb-0 h1">Menu App</span>
 
@@ -69,12 +70,35 @@ const DashboardLayout = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
-                <div className="container text-center">
+
+                <div className="text-start w-25 m-5">
+                    <table className='mx-auto text-black  shadow'>
+                        <tr>
+                            <th>Title</th>
+                            <th>Visit </th>
+                        </tr>
+                        <tbody className=''>
+                            <tr>
+                                <td>{1}</td>
+                                {/* <th><button href="/dashboard/addproduct" className="button1 px-5  mx-3 fw-bold my-2 border shadow">My Order</button></th> */}
+                                <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/addproduct">My Order</Link></td>
+
+                            </tr>
+                            <tr>
+                                <td>{2}</td>
+                                <td><Link className="button1  fw-bold my-2 border shadow" to="/dashboard/allseller">All Seller</Link></td>
+                            </tr>
+                            <tr>
+                                <td>{3}</td>
+                                <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/allbuyer">All Buyer</Link></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
