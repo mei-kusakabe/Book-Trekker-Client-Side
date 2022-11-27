@@ -13,8 +13,8 @@ const Banner = () => {
                         src="https://img.freepik.com/free-photo/front-view-desk-with-stacked-books-copy-space_23-2148827255.jpg?w=1380&t=st=1669288713~exp=1669289313~hmac=957c1fc26f91ffaa31216127b3168596d7b31f7f6508c44f4e37d6767172aeb4"
                         alt="Second slide"
                     />
-                    <Carousel.Caption className='d-flex flex-column justify-content-center h-100'>
-                        <h3 className='text-end ms-5 fw-bolder fs-2' style={{ color: "#EB6440" }}>     "Good friends, good books, <br></br> and a sleepy conscience: <br></br> this is the ideal life."</h3>
+                    <Carousel.Caption className='d-flex flex-column justify-content-center h-100 '>
+                        <h3 className='text-end ms-5 fw-bolder fs-2 nav-font cap' style={{ color: "#EB6440" }}>     "Good friends, good books, <br></br> and a sleepy conscience: <br></br> this is the ideal life."</h3>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -26,8 +26,8 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption className='d-flex flex-column justify-content-center h-100'>
-                        <h3 className='ms-5 fw-bolder' style={{ color: "#EB6440" }}>"There is no friend as loyal as a book."</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3 className='ms-5 fw-bolder nav-font fs-2 cap' style={{ color: "#EB6440" }}>"There is no friend as loyal as a book."</h3>
+                        <p className='d-none'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -38,8 +38,8 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption className='d-flex flex-column justify-content-center h-100'>
-                        <h3 className='ms-5 fw-bolder' style={{ color: "#EB6440" }}>"Books are a uniquely portable magic."</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3 className='ms-5 fw-bolder nav-font fs-2 cap' style={{ color: "#EB6440" }}>"Books are a uniquely portable magic."</h3>
+                        <p className='d-none'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel >

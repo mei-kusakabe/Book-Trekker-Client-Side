@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const AddProduct = () => {
 
     const { user } = useContext(AuthContext);
 
+    const navigate = useNavigate();
 
     const handleProduct = event => {
         event.preventDefault();
@@ -60,12 +62,15 @@ const AddProduct = () => {
 
                     //form.reset();
                     toast('Product  Added Successfully!');
+
+                    navigate('/dashboard/myproduct');
+
                     //lert('Service Added Successfully!')
                 }
             })
             .catch(error => console.error(error));
-
     }
+
     return (
         <div>
 

@@ -39,3 +39,23 @@
     transform: rotate(360deg);
   }
 }
+
+
+.nav-font {
+  font-family: 'Courgette', cursive;
+
+}
+
+.title-font {
+  font-family: 'Permanent Marker', cursive;
+}
+
+.cap {
+  overflow-y: hidden;
+}
+
+/* background-color */
+
+.sg {
+  background-color: #EFF5F5;
+}

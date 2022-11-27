@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
+import useAdmin from '../../hooks/useAdmin';
+import useSeller from '../../hooks/useSeller';
 import { AuthContext } from '../Contexts/AuthProvider';
 
 const ModalComponent = ({ book, price, img }) => {
@@ -10,6 +12,8 @@ const ModalComponent = ({ book, price, img }) => {
     console.log(img);
     const { user } = useContext(AuthContext);
     //const books = useLoaderData();
+    const [isAdmin] = useAdmin(user?.email)
+    const [isSeller] = useSeller(user?.email)
 
 
     const handleBooking = event => {
@@ -21,16 +25,6 @@ const ModalComponent = ({ book, price, img }) => {
         const phone = form.phone.value;
         const Bookname = form.Bookname.value;
         const price = form.price.value;
-
-
-
-        // const review = {
-        //     title: title,
-        //     price: price,
-        //     img: img,
-        //     description: description
-
-        // }
 
 
         const bookings = {
@@ -59,12 +53,19 @@ const ModalComponent = ({ book, price, img }) => {
                 console.log(data)
                 if (data.acknowledged) {
 
-                    // form.reset();
+                    form.reset();
                     toast('Successfully Booked!');
                     //lert('Service Added Successfully!')
                 }
             })
             .catch(error => console.error(error));
+
+    }
+
+
+    const handlemessage = () => {
+
+        toast('You have to be buyer to book this product!');
 
     }
 
@@ -74,7 +75,20 @@ const ModalComponent = ({ book, price, img }) => {
     return (
         <div>
 
-            < button onClick={handleShow} className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow" > Book Now</button>
+            {
+                !isSeller && !isAdmin ?
+                    <>
+                        < button onClick={handleShow} className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow"> Book Now</button>
+                    </>
+                    :
+                    <>
+                        < button onClick={handlemessage} className="px-3  text-white mx-3 fw-bolder my-2 border rounded shadow" style={{ textDecoration: 'none', background: "#748DA6" }}> Book Now</button>
+
+                    </>
+            }
+
+
+            {/* < button onClick={handleShow} className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow" > Book Now</button> */}
 
             <>
                 <Modal show={show} onHide={handleClose} animation={false}>

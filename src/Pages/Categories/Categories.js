@@ -51,13 +51,13 @@ const Categories = () => {
             </div>
             <div >
 
-                <div className='service-all m-5 border-0'>
+                <div className='service-all  border-0'>
                     {
                         categories.map(category => <div className='service m-5 text-center border-1 p-0 w-75 shadow'
                             key={category._id}
                             category={category}>
                             <img src={category?.img} alt="" />
-                            <h5 className='p-3 w-100'>{category?.title} </h5>
+                            <h5 className='p-3 w-100 title-font cap'>{category?.title} </h5>
                             <p className='p-3 text '>  {category?.description}</p>
                             <button className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow"><Link className='link' to={`/allbookscategory/${category?._id}`}>View Details</Link></button>
                         </div>

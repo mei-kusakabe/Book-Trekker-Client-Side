@@ -3,8 +3,8 @@ import './Testimonial.css'
 
 const Testimonial = () => {
     return (
-        <section >
-            <div className="container py-5">
+        <section className='sg'>
+            <div className="py-5 mx-5">
                 <div className="row d-flex justify-content-center">
                     <div className="col-md-10 col-xl-8 text-center">
                         <h3 className="fw-bold mb-4" style={{ textDecoration: 'none', color: "#EB6440", textDecorationColor: "#EB6440" }}>What Our Customers Are Saying? </h3>
