@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Container, Dropdown, Image, Nav, Navbar } from 'react-bootstrap';
+import { Container, Dropdown, Image, Nav, Navbar, Spinner } from 'react-bootstrap';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { FaSignOutAlt, FaUser } from 'react-icons/fa';
@@ -10,9 +10,7 @@ import './../../../Layout/DashboardLayout'
 
 const NavBar = () => {
 
-    const { user, logOut } = useContext(AuthContext);
-
-
+    const { user, logOut, loading } = useContext(AuthContext);
 
     // console.log(user?.usertype);
 
@@ -60,6 +58,11 @@ const NavBar = () => {
     console.log(usersC);
 
 
+    // if (loading) {
+    //     return <Spinner animation='border' variant='primary' />
+    // }
+
+
     return (
         <div className='header'>
 
@@ -91,7 +94,6 @@ const NavBar = () => {
                                             :
                                             <>
                                             </>
-
                                         }
 
                                         {
@@ -102,13 +104,10 @@ const NavBar = () => {
                                                 </>
                                                 :
                                                 <>
-
                                                 </>
-
                                         }
                                     </div>
                                     )
-
                                 }
                             </Nav>
 
@@ -120,40 +119,14 @@ const NavBar = () => {
                                                 <span className='fw-bold my-2 mx-2' style={{ textDecoration: 'none', color: "#EB6440" }}>{user?.displayName}</span>
 
                                                 <Nav.Link href="/dashboard" className='pe-2 fw-bold' style={{ textDecoration: 'none', color: "#EB6440" }}>DashBoard</Nav.Link>
-
-                                                {/* <Nav.Link href="/orders" className='pe-2 text-white fw-bold' style={{ textDecoration: 'underline', textDecorationColor: "white" }}>My Review</Nav.Link>
-
-                                                <Nav.Link href="/AddService" className='pe-2 text-white fw-bold' style={{ textDecoration: 'underline', textDecorationColor: "white" }}>Add Service</Nav.Link> */}
-
                                                 <FaSignOutAlt className='sign-out fw-bold my-2 fs-4 mx-2' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }} onClick={handleLogOut}></FaSignOutAlt>
-
                                             </>
                                             :
-
                                             <>
-
                                                 <Link to='/login' style={{ textDecoration: 'underline', color: "EB6440", textDecorationColor: "#EB6440" }} className='fw-bold'>Login</Link>
-
-                                                <Dropdown>
-                                                    <Dropdown.Toggle className='fw-bolder' style={{ textDecoration: 'none', background: "#EB6440", color: "white" }} id="dropdown-basic">
-                                                        Register
-                                                    </Dropdown.Toggle>
-
-                                                    <Dropdown.Menu>
-                                                        <Dropdown.Item href="/register">As User Account</Dropdown.Item>
-                                                        <Dropdown.Item href="/register">As Seller Account</Dropdown.Item>
-                                                        <Dropdown.Item href="/register">Admin Account</Dropdown.Item>
-                                                    </Dropdown.Menu>
-                                                </Dropdown>
-                                                {/* <Link to='/login' style={{ textDecoration: 'underline', color: "EB6440", textDecorationColor: "#EB6440" }} className='fw-bold'>Login</Link> */}
-
+                                                <Link to='/register' style={{ textDecoration: 'underline', color: "EB6440", textDecorationColor: "#EB6440" }} className='fw-bold'>Register</Link>
                                             </>
-
-
                                     }
-
-
-
 
                                 </>
 
@@ -165,25 +138,6 @@ const NavBar = () => {
                                     </Image>
                                     : <FaUser className='mt-2'></FaUser>
                                 }
-
-
-
-
-
-
-                                {/* {
-
-                                    userD?.usertype === "Buyer" ?
-
-                                        <Nav.Link href="/photogallery" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Order</Nav.Link>
-                                        :
-                                        <>
-                                            <Nav.Link href="/contact" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Add Product</Nav.Link>
-                                            <Nav.Link href="/photogallery" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>My Product</Nav.Link>
-
-                                        </>
-
-                                } */}
 
                             </Nav>
 

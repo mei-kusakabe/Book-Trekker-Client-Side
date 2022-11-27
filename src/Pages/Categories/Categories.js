@@ -11,9 +11,14 @@ const Categories = () => {
 
     //  useTitle('Services')
     // const [categories, setCategories] = useState([]);
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/categories')
+    //         .then(res => res.json())
+    //         .then(data => setCategories(data))
+    // }, []);
+
+
     const { loading } = useContext(AuthContext);
-
-
     // implemented  react query 
 
     const { data: categories = [] } = useQuery({
@@ -24,14 +29,6 @@ const Categories = () => {
             return data;
         }
     })
-
-
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/categories')
-    //         .then(res => res.json())
-    //         .then(data => setCategories(data))
-    // }, []);
-
 
     if (loading) {
         return <Spinner animation='border' variant='primary' />

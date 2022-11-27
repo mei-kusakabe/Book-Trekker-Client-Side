@@ -6,7 +6,7 @@ const AddProduct = () => {
     const handleProduct = event => {
         event.preventDefault();
         const form = event.target;
-        const name = form.name.value;
+        //const name = form.name.value;
         const title = form.title.value;
         const CategoryId = form.CategoryId.value;
         const pic = form.pic.value;
@@ -24,7 +24,7 @@ const AddProduct = () => {
 
         const product = {
             title: title,
-            name: name,
+            //  name: name,
             CategoryId: CategoryId,
             pic: pic,
             description: description,
@@ -71,8 +71,15 @@ const AddProduct = () => {
 
                 <div className='row row-cols-1 row-cols-lg-2 gap-4'>
                     <input name="name" type="text" placeholder="Product Name" className="input border shadow mx-auto p-3 rounded" />
-                    <input name="title" type="text" placeholder="Product Category Name" className="input border shadow mx-auto p-3 rounded" />
-                    <input name="CategoryId" type="text" placeholder="Product Category ID" className="input border shadow mx-auto p-3 rounded" />
+                    {/* <input name="title" type="text" placeholder="Product Category Name" className="input border shadow mx-auto p-3 rounded" /> */}
+                    <label for="title" >Choose Category:</label>
+                    <select id="title" name="CategoryId" className="input border shadow mx-auto p-3 rounded w-50" size="3">
+                        <option value="637ff22e7fbc105d1cb18575">CHILDREN'S BOOKS</option>
+                        <option value="637ff22e7fbc105d1cb18576">LITERATURE & FICTION</option>
+                        <option value="637ff22e7fbc105d1cb18577">RELIGION & SPIRITUALITY</option>
+                    </select>
+
+                    {/* <input name="CategoryId" type="text" placeholder="Product Category ID" className="input border shadow mx-auto p-3 rounded" /> */}
                     <input name="pic" type="text" placeholder="Photo URL" className="input border shadow mx-auto p-3 rounded" />
                     <textarea name="description" className="input border shadow mx-auto p-3 rounded w-50" placeholder="Description" required></textarea>
                     <input name="YearofPurchase" type="text" placeholder="Year of Purchase" className="input border shadow mx-auto p-3 rounded" />

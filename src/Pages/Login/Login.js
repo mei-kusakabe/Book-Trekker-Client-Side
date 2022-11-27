@@ -8,6 +8,7 @@ import { Navigate } from 'react-router-dom';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { FaGoogle, FaEnvelope, FaLock } from "react-icons/fa";
 import './Login.css'
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
 
@@ -21,7 +22,15 @@ const Login = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
+    const [loginUserEmail, setLoginUserEmail] = useState('');
+    const [token] = useToken(loginUserEmail);
+
     const from = location.state?.from?.pathname || '/';
+
+    if (token) {
+        navigate(from, { replace: true });
+    }
+
 
     const googleProvider = new GoogleAuthProvider();
 
@@ -50,7 +59,7 @@ const Login = () => {
                 }
 
                 updateUserProfile(profile)
-                    .then(() => { saveUser(name, email, photoURL, usertype) })
+                    .then(() => { saveUser(user, usertype) })
                     .catch(error => console.error(error));
 
                 // get jwt token
@@ -96,6 +105,7 @@ const Login = () => {
                 const currentUser = {
                     email: user.email
                 }
+                setLoginUserEmail(event.email);
 
                 console.log(currentUser);
 
@@ -131,15 +141,21 @@ const Login = () => {
             });
     }
 
-    const saveUser = (name, email, photoURL, usertype) => {
-        const user = { name, email, photoURL, usertype };
+
+
+
+    const saveUser = (User, usertype) => {
+        //const user = { name, email, photoURL, usertype };
+        const { email, displayName, photoURL } = User;
+        // const name = displayName;
+        const userinfo = { email, name: displayName, photoURL, usertype }
 
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(userinfo)
         })
             .then(res => res.json())
             .then(data => {

@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { Button, Form, Spinner } from 'react-bootstrap';
+import toast from 'react-hot-toast';
 import { FaCameraRetro, FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import useToken from '../../hooks/useToken';
 import { AuthContext } from '../Contexts/AuthProvider';
 //import useTitle from '../hooks/useTitle';
 import "./Register.css"
@@ -10,10 +12,17 @@ const Register = () => {
     const [error, setError] = useState('');
     // const [accepted, setAccepted] = useState(false);
     const { createUser, updateUserProfile, setUser, loading } = useContext(AuthContext);
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail);
+    const navigate = useNavigate();
 
-    if (loading) {
-        return <Spinner animation='border' variant='primary' />
+    if (token) {
+        navigate('/');
     }
+
+    // if (loading) {
+    //     return <Spinner animation='border' variant='primary' />
+    // }
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -29,7 +38,7 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 setUser(user);
-                //toast
+                toast('User Created Successfully.')
                 setError('');
                 form.reset();
                 handleUpdateUserProfile(name, photoURL);
@@ -55,6 +64,33 @@ const Register = () => {
 
 
 
+    // const saveUser = (name, email, photoURL, usertype) => {
+    //     const user = { name, email, photoURL, usertype };
+
+    //     fetch('http://localhost:5000/users', {
+    //         method: 'POST',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(user)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             Navigate('/');
+    //             // if(data.acknowledged){
+    //             //     form.reset();
+    //             //     setShow(false);
+    //             //    toast('argvergaerg')
+
+    //             // }
+    //         })
+    //         .catch(error => console.error(error));
+
+    // }
+
+
+
     const saveUser = (name, email, photoURL, usertype) => {
         const user = { name, email, photoURL, usertype };
 
@@ -68,7 +104,8 @@ const Register = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                Navigate('/');
+                setCreatedUserEmail(email);
+
                 // if(data.acknowledged){
                 //     form.reset();
                 //     setShow(false);
@@ -79,7 +116,6 @@ const Register = () => {
             .catch(error => console.error(error));
 
     }
-
 
 
 

@@ -6,21 +6,20 @@ import './MyOrder.css'
 const MyOrder = () => {
 
     const { user, logOut } = useContext(AuthContext);
-    const [mybook, setMybooking] = useState([]);
-
-
+    // const [mybook, bookings] = useState([]);
 
     // useEffect(() => {
     //     fetch(`http://localhost:5000/bookings?email=${user?.email}`)
     //         .then(res => res.json())
-    //         .then(data => setMybooking(data))
+    //         .then(data => bookings(data))
     // }, []);
-
 
 
     // useEffect(() => {
     //     fetch(`http://localhost:5000/bookings?email=${user?.email}`)
     // }, [user?.email])
+
+
 
     const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
@@ -32,6 +31,23 @@ const MyOrder = () => {
             return data;
         }
     })
+
+    console.log(bookings);
+
+    // const url = `http://localhost:5000/bookings?email=${user?.email}`;
+
+    // const { data: bookings = [] } = useQuery({
+    //     queryKey: ['bookings', user?.email],
+    //     queryFn: async () => {
+    //         const res = await fetch(url, {
+    //             headers: {
+    //                 authorization: `bearer ${localStorage.getItem('book-trekker-token')}`
+    //             }
+    //         });
+    //         const data = await res.json();
+    //         return data;
+    //     }
+    // })
 
     console.log(bookings);
 
