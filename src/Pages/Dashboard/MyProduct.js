@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Image } from 'react-bootstrap';
 import { FaCheck } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
@@ -69,7 +70,8 @@ const MyProduct = () => {
                     <th>Product Name</th>
                     <th>SalePrice</th>
                     <th>Condition</th>
-                    {/* <th>Sale Status</th> */}
+                    <th>Sale Status</th>
+                    <th>Advertise</th>
                 </tr>
 
                 <tbody>
@@ -77,10 +79,17 @@ const MyProduct = () => {
 
                         products.map((product, i) => <tr key={user._id}>
                             <th>{i + 1}</th>
-                            <td>{product.pic} </td>
+                            <td> <Image
+                                style={{ height: '50px', width: "60px" }} data-toggle="tooltip"
+                                roundedCircle title={product.name}
+                                src={product.pic}>
+                            </Image></td>
+
+                            {/* <td>  <img class="rounded-circle w-25 h-25" src={product.pic} alt='' /> </td> */}
                             <td>{product.name}</td>
                             <td>{product.resalePrice}</td>
                             <td>{product.condition}</td>
+                            <td>Available</td>
                             <td><button onClick={() => handleAdvertise(product)} className="button1 fw-bold my-2 border shadow">Advertise</button></td>
                             {/* <td><Link className="button1 fw-bold my-2 border shadow" to="/">Delete</Link></td> */}
 
@@ -94,3 +103,5 @@ const MyProduct = () => {
 };
 
 export default MyProduct;
+
+

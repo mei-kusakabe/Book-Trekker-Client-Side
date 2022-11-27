@@ -26,7 +26,6 @@ const Advertisement = () => {
                 {
                     product?.length ?
                         <>
-
                             {
                                 product.map(c => <div className='ad m-5 text-center border-1 p-0  shadow'
                                     key={c._id}>

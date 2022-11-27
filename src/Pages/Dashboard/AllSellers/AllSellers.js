@@ -84,7 +84,7 @@ const AllSellers = () => {
                                 {
                                     user?.role === 'seller' ?
                                         <td className=''>
-                                            <FaCheck></FaCheck>
+                                            <FaCheck className="bg-primary text-white rounded h-50 w-100"></FaCheck>
                                         </td>
                                         :
 

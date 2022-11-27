@@ -80,7 +80,7 @@ const NavBar = () => {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className='ms-auto'>
                             <Nav.Link href="/" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Home</Nav.Link>
-                            <Nav.Link href="/services" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Services</Nav.Link>
+                            <Nav.Link href="/ad" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Advertisement</Nav.Link>
                             <Nav.Link href="/blog" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Blog</Nav.Link>
                             <Nav.Link href="/photogallery" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Photo Gallery</Nav.Link>
                             <Nav.Link href="/contact" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Contact</Nav.Link>

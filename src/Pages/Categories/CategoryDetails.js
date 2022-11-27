@@ -1,6 +1,9 @@
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import toast from 'react-hot-toast';
+import { FaCheck } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
 import ModalComponent from '../ModalComponent/ModalComponent';
@@ -15,7 +18,29 @@ const CategoryDetails = () => {
 
     // const { name: treatmentName, slots, price } = treatment;
 
+    // const url = `http://localhost:5000/allusers/seller/${user.email}`;
 
+    // const { data: users = [] } = useQuery({
+    //     queryKey: ['users', user?.email],
+    //     queryFn: async () => {
+    //         const res = await fetch(url);
+    //         const data = await res.json();
+    //         return data;
+    //     }
+    // })
+
+    // console.log(users);
+
+
+    const url = "http://localhost:5000/allusers";
+
+    const [users, setAlluser] = React.useState([]);
+
+    React.useEffect(() => {
+        axios.get(url).then((response) => {
+            setAlluser(response.data);
+        });
+    }, []);
 
     // const handleBooking = event => {
     //     event.preventDefault();
@@ -95,12 +120,34 @@ const CategoryDetails = () => {
                                 <p className='px-3 card-text'> <span className='fw-bold' style={{ textDecoration: 'none', color: "#497174" }}>Location:</span> {book?.location}</p>
                                 <p className='px-3 card-text'><span className='fw-bold' style={{ textDecoration: 'none', color: "#497174" }}>Year of Use:</span>  {book?.yearofuse}</p>
                             </div>
-                            <p className='px-3 card-text'><span className='fw-bold' style={{ textDecoration: 'none', color: "#497174" }}>Sellers Name:</span>  {book?.SellerName}</p>
+                            <p className='px-3 card-text'><span className='fw-bold' style={{ textDecoration: 'none', color: "#497174" }}>Sellers Name:</span>  {book?.SellerName}
+
+                                {
+
+                                    users.map((user, i) => <tr key={user._id}>
+
+                                        {
+                                            user?.role === 'seller' && book?.SellerName === user?.name ?
+                                                <td className=''>
+                                                    <FaCheck className="bg-primary text-white rounded h-50 w-100"></FaCheck>
+                                                </td>
+                                                :
+
+                                                <td className='d-none'>
+                                                    <FaCheck></FaCheck>
+                                                </td>
+
+                                        }
+
+                                    </tr>
+                                    )}
+
+                            </p>
                             <p className='px-3 card-text'><span className='fw-bold' style={{ textDecoration: 'none', color: "#497174" }}>Date Posted:</span>  {book?.PostTime.split("", 10)}</p>
                         </div>
                         {/* <button onClick={handleShow} className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow"><Link className='link' to={`/allbookscategory/${book?._id}`}>Book Now</Link></button> */}
                         {/* < button onClick={handleShow} className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow" > Book Now</button> */}
-                        <ModalComponent book={book.name}
+                        < ModalComponent book={book.name}
                             price={book.resalePrice}
                             img={book.pic}
                         ></ModalComponent>

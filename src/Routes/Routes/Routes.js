@@ -2,6 +2,7 @@ import React from 'react';
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from '../../Layout/DashboardLayout';
 import Main from '../../Layout/Main';
+import Advertisement from '../../Pages/Advertisement/Advertisement';
 import Blog from '../../Pages/Blog/Blog';
 import Categories from '../../Pages/Categories/Categories';
 import CategoryDetails from '../../Pages/Categories/CategoryDetails';
@@ -56,6 +57,10 @@ export const routes = createBrowserRouter([
                 path: '/blog',
                 element: <Blog></Blog>
             },
+            {
+                path: '/ad',
+                element: <Advertisement></Advertisement>
+            }
 
 
         ]
