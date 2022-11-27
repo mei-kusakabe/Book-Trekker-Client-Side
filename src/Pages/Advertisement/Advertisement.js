@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import './Advertisement.css'
 
 const Advertisement = () => {
     const { data: product, isLoading } = useQuery({
         queryKey: ['product'],
-        queryFn: () => fetch('http://localhost:5000/addCollection')
+        queryFn: () => fetch('http://localhost:5000/adCollection')
             .then(res => res.json())
     })
 
@@ -16,33 +18,23 @@ const Advertisement = () => {
 
     return (
         <div className='advertise'>
+
             {
-                product?.length ? <h3 className='mt-5 fs-2 pt-5' >Top Advertisement..</h3> : <h3 className='d-none'>none</h3>
+                product?.length ? <h3 className='fw-bold mt-5 fs-2 pt-5' style={{ textDecoration: 'none', color: "#EB6440", textDecorationColor: "#EB6440" }} >Top Advertisement..</h3> : <h3 className='d-none'>none</h3>
             }
-            <div className='m-5 p-5 fs-2 advertise-section-container'>
+            <div className='ad-all m-5 border-0'>
                 {
                     product?.length ?
                         <>
 
                             {
-                                product.map(c =>
-
-
-                                    <div class="card-deck mb-5 ">
-                                        <div class="card-group">
-                                            <div class="card mx-2 add-section ">
-                                                <img class="card-img-top add-img rounded-circle" src={c.img} alt='' />
-                                                <div class="card-body">
-                                                    <h5 class="card-title">{c.product}</h5>
-                                                    <p class="card-text"><small className='fs-5'>price: {c.saleprice}</small><br /><small className='fs-5'>condition: {c.condition}</small></p>
-
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
+                                product.map(c => <div className='ad m-5 text-center border-1 p-0  shadow'
+                                    key={c._id}>
+                                    <img src={c?.pic} alt="" />
+                                    <h5 className='p-3 w-100'>{c?.name} </h5>
+                                    <p className='p-3 text '>  {c?.resalePrice}</p>
+                                    <button className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow"><Link className='link' to={`/allbookscategory/${c?._id}`}>View Details</Link></button>
+                                </div>
                                 )
 
                             }
@@ -57,3 +49,6 @@ const Advertisement = () => {
 };
 
 export default Advertisement;
+
+
+

@@ -26,34 +26,34 @@ const MyProduct = () => {
 
     console.log(products);
 
-    // const handleAdvertise = (row) => {
+    const handleAdvertise = (row) => {
 
-    //     const product = {
+        const product = {
 
-    //         pic: row.pic,
-    //         resalePrice: row.resalePrice,
-    //         condition: row.condition,
-    //         name: row.name
+            pic: row.pic,
+            resalePrice: row.resalePrice,
+            condition: row.condition,
+            name: row.name
 
-    //     }
-
-
-    //     fetch('http://localhost:5000/addCollection', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(product)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data)
-    //         })
-    //         .catch(error => console.error(error));
+        }
 
 
+        fetch('http://localhost:5000/adCollection', {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch(error => console.error(error));
 
-    // }
+
+
+    }
 
 
 
@@ -81,7 +81,7 @@ const MyProduct = () => {
                             <td>{product.name}</td>
                             <td>{product.resalePrice}</td>
                             <td>{product.condition}</td>
-                            {/* <td><button onClick={() => handleAdvertise(product)} className="button1 fw-bold my-2 border shadow">Sale status</button></td> */}
+                            <td><button onClick={() => handleAdvertise(product)} className="button1 fw-bold my-2 border shadow">Advertise</button></td>
                             {/* <td><Link className="button1 fw-bold my-2 border shadow" to="/">Delete</Link></td> */}
 
                         </tr>)
