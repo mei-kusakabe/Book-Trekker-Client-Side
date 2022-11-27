@@ -41,8 +41,8 @@ const Advertisement = () => {
                                 product.map(c => <div className='ad mx-5 text-center border-1 p-0  shadow'
                                     key={c._id}>
                                     <img src={c?.pic} alt="" />
-                                    <h5 className='p-3 w-100'>{c?.name} </h5>
-                                    <p className='p-3 text '>  {c?.resalePrice}</p>
+                                    <h5 className='p-3 w-100 title-font'>Book Name: {c?.name} </h5>
+                                    <p className='p-3 text '> Price: {c?.resalePrice}</p>
 
                                     <button className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow"><Link className='link' to={`/`}>View more</Link></button>
 
