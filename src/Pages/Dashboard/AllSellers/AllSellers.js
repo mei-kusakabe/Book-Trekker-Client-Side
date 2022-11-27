@@ -4,6 +4,7 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { FaEnvelope, FaCheck } from 'react-icons/fa';
 
 
 const AllSellers = () => {
@@ -75,8 +76,24 @@ const AllSellers = () => {
                     {
                         users.map((user, i) => <tr key={user._id}>
                             <th>{i + 1}</th>
-                            <td>{user.name}</td>
+                            <td>{user.name} </td>
+
                             <td>{user.email}</td>
+
+                            <td>
+                                {
+                                    user?.role === 'seller' ?
+                                        <td className=''>
+                                            <FaCheck></FaCheck>
+                                        </td>
+                                        :
+
+                                        <td className='d-none'>
+                                            <FaCheck></FaCheck>
+                                        </td>
+
+                                }
+                            </td>
                             <td><button onClick={() => handleVerifySeller(user._id)} className="button1 fw-bold my-2 border shadow">Verify</button></td>
                             <td>
 

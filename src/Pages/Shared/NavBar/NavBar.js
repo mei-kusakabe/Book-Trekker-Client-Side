@@ -43,19 +43,19 @@ const NavBar = () => {
     //console.log(services);
 
 
-    const url = `http://localhost:5000/users?email=${user?.email}`;
+    // const url = `http://localhost:5000/users?email=${user?.email}`;
 
-    const { data: usersC = [] } = useQuery({
-        queryKey: ['usersC', user?.email],
-        queryFn: async () => {
-            const res = await fetch(url);
-            const data = await res.json();
-            // userC = data;
-            return data;
-        }
-    })
+    // const { data: usersC = [] } = useQuery({
+    //     queryKey: ['usersC', user?.email],
+    //     queryFn: async () => {
+    //         const res = await fetch(url);
+    //         const data = await res.json();
+    //         // userC = data;
+    //         return data;
+    //     }
+    // })
 
-    console.log(usersC);
+    // console.log(usersC);
 
 
     // if (loading) {
@@ -84,7 +84,7 @@ const NavBar = () => {
                             <Nav.Link href="/blog" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Blog</Nav.Link>
                             <Nav.Link href="/photogallery" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Photo Gallery</Nav.Link>
                             <Nav.Link href="/contact" className='pe-2 fw-bold' style={{ textDecoration: 'underline', color: "#EB6440", textDecorationColor: "#EB6440" }}>Contact</Nav.Link>
-                            <Nav>
+                            {/* <Nav>
                                 {
                                     usersC.map((userD, i) => <div
                                         key={i}
@@ -109,7 +109,7 @@ const NavBar = () => {
                                     </div>
                                     )
                                 }
-                            </Nav>
+                            </Nav> */}
 
                             <Nav>
                                 <>

@@ -9,6 +9,7 @@ import AddProduct from '../../Pages/Dashboard/AddProduct/AddProduct';
 import AllBuyer from '../../Pages/Dashboard/AllBuyers/AllBuyer';
 import AllSellers from '../../Pages/Dashboard/AllSellers/AllSellers';
 import MyOrder from '../../Pages/Dashboard/MyOrder/MyOrder';
+import MyProduct from '../../Pages/Dashboard/MyProduct';
 import FourZeroFour from '../../Pages/FourZeroFour/FourZeroFour';
 import Home from '../../Pages/Home/Home';
 import Login from '../../Pages/Login/Login';
@@ -69,6 +70,10 @@ export const routes = createBrowserRouter([
                 path: '/dashboard/myorder',
                 element: <MyOrder></MyOrder>
             },
+            {
+                path: '/dashboard/myproduct',
+                element: <MyProduct></MyProduct>
+            },
 
             {
                 path: '/dashboard/allbuyer',
@@ -78,29 +83,13 @@ export const routes = createBrowserRouter([
                 path: '/dashboard/allseller',
                 element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
-            // {
-            //     path: '/dashboard/allusers',
-            //     element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
-            // },
+
             {
                 path: '/dashboard/addproduct',
                 element: <AddProduct></AddProduct>
             },
 
-            // {
-            //     path: '/users/:email',
-            //     element: <Na></NavBar>,
-            //     loader: ({ params }) => fetch(`http://localhost:5000/users/${params.email}`)
-            // }
-            // {
-            //     path: '/dashboard/managedoctors',
-            //     element: <AdminRoute><ManageDoctors></ManageDoctors></AdminRoute>
-            // },
-            // {
-            //     path: '/dashboard/payment/:id',
-            //     element: <Payment></Payment>,
-            //     loader: ({ params }) => fetch(`https://doctors-portal-server-rust.vercel.app/bookings/${params.id}`)
-            // },
+
         ]
     },
     { path: '*', element: <FourZeroFour></FourZeroFour> }
