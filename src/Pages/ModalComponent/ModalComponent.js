@@ -1,16 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import toast from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import useAdmin from '../../hooks/useAdmin';
 import useSeller from '../../hooks/useSeller';
 import { AuthContext } from '../Contexts/AuthProvider';
 
-const ModalComponent = ({ book, price, img }) => {
+const ModalComponent = ({ book, price, img, books }) => {
 
-
+    const navigate = useNavigate();
     console.log(img);
     const { user } = useContext(AuthContext);
+    console.log(user);
     //const books = useLoaderData();
     const [isAdmin] = useAdmin(user?.email)
     const [isSeller] = useSeller(user?.email)
@@ -62,6 +63,94 @@ const ModalComponent = ({ book, price, img }) => {
 
     }
 
+    // const handleWish = () => {
+
+    //     fetch('http://localhost:5000/wishlists', {
+    //         method: 'PUT',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(bookings)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             if (data.acknowledged) {
+
+    //                 //  form.reset();
+    //                 toast('Added to Wish List!');
+    //                 //lert('Service Added Successfully!')
+    //             }
+    //         })
+    //         .catch(error => console.error(error));
+
+
+    //     fetch('http://localhost:5000/allbookscategory', {
+    //         method: 'POST',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(product)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             if (data.acknowledged) {
+
+    //                 //form.reset();
+    //                 toast('Product  Added Successfully!');
+
+    //                 navigate('/dashboard/myproduct');
+
+    //                 //lert('Service Added Successfully!')
+    //             }
+    //         })
+    //         .catch(error => console.error(error));
+    // }
+
+    const handleWish = (row, uid) => {
+
+        const product = {
+
+            title: row.title,
+            CategoryId: row.CategoryId,
+            pic: row.pic,
+            resalePrice: row.resalePrice,
+            originalPrice: row.originalPrice,
+            location: row.location,
+            PostTime: row.PostTime,
+            condition: row.condition,
+            SellerName: row.SellerName,
+            uid: uid
+        }
+
+
+        fetch('http://localhost:5000/wishCollection', {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+
+                    toast('Added to WishList Successfully!');
+
+                    navigate('/dashboard/mywishlist');
+
+
+                }
+            })
+            .catch(error => console.error(error));
+
+    }
+
+
+
+
 
     const handlemessage = () => {
 
@@ -79,6 +168,10 @@ const ModalComponent = ({ book, price, img }) => {
                 !isSeller && !isAdmin ?
                     <>
                         < button onClick={handleShow} className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow"> Book Now</button>
+                        {/* < button onClick={handleShow} className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow"><Link className='link' to={`/allbookscategory/${category?._id}`}>Add to WishList</Link> </button> */}
+                        <button onClick={() => handleWish(books, user?.uid)} className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow">Add to WishList</button>
+
+
                     </>
                     :
                     <>

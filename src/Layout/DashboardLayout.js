@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import useAdmin from '../hooks/useAdmin';
+import useBuyer from '../hooks/useBuyer';
 import useSeller from '../hooks/useSeller';
+import useSellerAll from '../hooks/useSellerAll';
 import { AuthContext } from '../Pages/Contexts/AuthProvider';
 import Navbar from '../Pages/Shared/NavBar/NavBar';
 import './DashboardLayout.css'
@@ -12,6 +14,9 @@ const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
     const [isAdmin] = useAdmin(user?.email)
     const [isSeller] = useSeller(user?.email)
+    const [isBuyer] = useBuyer(user?.email)
+    const [isSellerAll] = useSellerAll(user?.email)
+
 
     //const [isAdmin] = useAdmin(user?.email)
     return (
@@ -99,33 +104,36 @@ const DashboardLayout = () => {
                                 </>
                             }
 
-
                             {
-                                isSeller && <>
-                                    <tr>
-                                        <td><Link className="button1  fw-bold my-2 border shadow" to="/dashboard/addproduct">Add Products</Link></td>
-                                    </tr>
-                                    <tr>
-                                        <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/myproduct">My Products</Link></td>
-                                    </tr>
-                                    <tr>
-                                        <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/allbuyer">My Buyer</Link></td>
-                                    </tr>
-                                </>
-                            }
-
-
-                            {
-                                !isSeller && !isAdmin ?
+                                isBuyer ?
                                     <>
                                         <tr>
                                             <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/myorder">My Order</Link></td>
+                                            <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/mywishlist" >My WishList</Link></td>
+
                                         </tr>
                                     </>
                                     :
                                     <></>
                             }
 
+
+                            {
+                                isSellerAll || isSeller ?
+                                    <>
+                                        <tr>
+                                            <td><Link className="button1  fw-bold my-2 border shadow" to="/dashboard/addproduct">Add Products</Link></td>
+                                        </tr>
+                                        <tr>
+                                            <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/myproduct">My Products</Link></td>
+                                        </tr>
+                                        <tr>
+                                            <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/allbuyer">My Buyer</Link></td>
+                                        </tr>
+                                    </>
+                                    :
+                                    <></>
+                            }
 
                         </tbody>
                     </table>

@@ -31,6 +31,7 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const usertype = form.usertype.value;
+        const inrole = usertype;
         console.log(name, photoURL, email, password);
 
         createUser(email, password)
@@ -55,7 +56,7 @@ const Register = () => {
             }
 
             updateUserProfile(profile)
-                .then(() => { saveUser(name, email, photoURL, usertype) })
+                .then(() => { saveUser(name, email, photoURL, usertype, inrole) })
                 .catch(error => console.error(error));
         }
 
@@ -91,8 +92,8 @@ const Register = () => {
 
 
 
-    const saveUser = (name, email, photoURL, usertype) => {
-        const user = { name, email, photoURL, usertype };
+    const saveUser = (name, email, photoURL, usertype, inrole) => {
+        const user = { name, email, photoURL, usertype, inrole };
 
         fetch('http://localhost:5000/users', {
             method: 'POST',

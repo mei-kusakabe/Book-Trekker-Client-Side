@@ -3,7 +3,7 @@ import './Testimonial.css'
 
 const Testimonial = () => {
     return (
-        <section className='sg'>
+        <section className='sg m-5'>
             <div className="py-5 mx-5">
                 <div className="row d-flex justify-content-center">
                     <div className="col-md-10 col-xl-8 text-center">
@@ -107,7 +107,7 @@ const Testimonial = () => {
                                     </li>
                                 </ul>
                                 <p className="mb-2">
-                                    <i className="fas fa-quote-left pe-2"></i>I have taken many parcels from Book Trekker and their commitment to better books in cheaper rate.They are trustworthy.they deserve 9 out of 10 ratings.Yes,You can buy books from them.
+                                    <i className="fas fa-quote-left pe-2"></i>I have taken many parcels from Book Trekker.They are trustworthy.Yes,You can buy books from them.
                                     <i className="fas fa-quote-right ps-2"></i>
                                 </p>
                             </div>

@@ -50,6 +50,8 @@ const MyProduct = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                toast.success(`Advertised successfully`)
+
             })
             .catch(error => console.error(error));
 
@@ -80,8 +82,7 @@ const MyProduct = () => {
 
 
     return (
-        <div className='px-3 '>
-
+        <div className='container my-5'>
 
 
             <table className='mx-auto text-black'>
@@ -94,7 +95,6 @@ const MyProduct = () => {
                     <th>Sale Status</th>
                     <th>Advertise</th>
                     <th>Delete</th>
-
                 </tr>
 
                 <tbody>

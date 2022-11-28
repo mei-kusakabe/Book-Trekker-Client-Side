@@ -36,7 +36,9 @@ const Categories = () => {
 
 
     return (
-        <div className='services'>
+
+
+        <div className='services m-5'>
 
             <h2 className='fw-bold pt-4' style={{ textDecoration: 'none', color: "#EB6440", textDecorationColor: "#EB6440" }}>Shop by Category</h2>
 
@@ -53,7 +55,7 @@ const Categories = () => {
 
                 <div className='service-all  border-0'>
                     {
-                        categories.map(category => <div className='service m-5 text-center border-1 p-0 w-75 shadow'
+                        categories.map(category => <div className='service m-5 teal-c text-center border-1 p-0 w-75 shadow'
                             key={category._id}
                             category={category}>
                             <img src={category?.img} alt="" />
@@ -69,6 +71,8 @@ const Categories = () => {
                 </div>
             </div>
         </div>
+
+
     );
 };
 

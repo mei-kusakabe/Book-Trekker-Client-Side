@@ -59,7 +59,7 @@ const Login = () => {
                 }
 
                 updateUserProfile(profile)
-                    .then(() => { saveUser(user, usertype) })
+                    .then(() => { saveUser2(user, usertype) })
                     .catch(error => console.error(error));
 
                 // get jwt token
@@ -171,6 +171,36 @@ const Login = () => {
             .catch(error => console.error(error));
 
     }
+
+
+    const saveUser2 = (User, usertype) => {
+        //const user = { name, email, photoURL, usertype };
+        const { email, displayName, photoURL } = User;
+        // const name = displayName;
+        const userinfo = { email, name: displayName, photoURL, usertype, inrole: usertype }
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userinfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                Navigate('/');
+                // if(data.acknowledged){
+                //     form.reset();
+                //     setShow(false);
+                //    toast('argvergaerg')
+
+                // }
+            })
+            .catch(error => console.error(error));
+
+    }
+
 
 
     return (

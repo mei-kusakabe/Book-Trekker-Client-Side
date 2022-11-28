@@ -106,7 +106,7 @@ const CategoryDetails = () => {
 
             <div className='book-all m-5 border-0 justify-content-center align-items-center'>
                 {
-                    books.map((book, i) => <div className='card w-xl-50 w-lg-50 w-md-100 mx-auto my-5 service m-5 text-center border-1 p-0  shadow justify-content-center align-items-center'
+                    books.map((book, i) => <div className='card w-xl-50 w-lg-50 w-md-100 mx-auto my-5 teal-c service m-5 text-center border-1 p-0  shadow justify-content-center align-items-center'
                         key={i} >
 
                         <img src={book?.pic} alt="" className='card-img-top' />
@@ -150,6 +150,7 @@ const CategoryDetails = () => {
                         < ModalComponent book={book.name}
                             price={book.resalePrice}
                             img={book.pic}
+                            books={book}
                         ></ModalComponent>
                     </div>
 
