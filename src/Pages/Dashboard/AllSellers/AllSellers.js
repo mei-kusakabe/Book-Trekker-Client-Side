@@ -11,7 +11,7 @@ const AllSellers = () => {
     const { user, logOut } = useContext(AuthContext);
 
 
-    //const url = `http://localhost:5000/userstype?usertype=${user?.usertype}`;
+    //const url = `https://book-trekker-server-side.vercel.app/userstype?usertype=${user?.usertype}`;
     // const { data: users = [] } = useQuery({
     //     queryKey: ['users', user?.email],
     //     queryFn: async () => {
@@ -30,7 +30,7 @@ const AllSellers = () => {
     // }, []);
 
 
-    const url = `http://localhost:5000/userstype?usertype=Seller`;
+    const url = `https://book-trekker-server-side.vercel.app/userstype?usertype=Seller`;
 
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
@@ -42,7 +42,7 @@ const AllSellers = () => {
     });
 
     const handleVerifySeller = id => {
-        fetch(`http://localhost:5000/allusers/seller/${id}`, {
+        fetch(`https://book-trekker-server-side.vercel.app/allusers/seller/${id}`, {
             //method: 'PUT'
             method: 'PUT',
             headers: {
@@ -60,7 +60,7 @@ const AllSellers = () => {
     const handleDelete = user => {
         const proceed = window.confirm('Are you sure you want to delete this seller?');
         if (proceed) {
-            fetch(`http://localhost:5000/allusers/${user._id}`, {
+            fetch(`https://book-trekker-server-side.vercel.app/allusers/${user._id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('book-trekker-token')}`
@@ -80,6 +80,10 @@ const AllSellers = () => {
     /// console.log(users);
     return (
         <div className='container my-5'>
+
+            {
+                users?.length ? <h3 className='fw-bold fs-2 py-3' style={{ textDecoration: 'none', color: "#EB6440", textDecorationColor: "#EB6440" }} >All Sellers From Book-Trekker</h3> : <h3 className='d-none'>none</h3>
+            }
             <table className='mx-auto text-black'>
                 <tr>
                     <th>No.</th>

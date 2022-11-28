@@ -5,7 +5,7 @@ const useSellerAll = (usertype) => {
     const [isSellerAllLoading, setIsSellerAllLoading] = useState(true);
     useEffect(() => {
         if (usertype) {
-            fetch(`http://localhost:5000/allusers/sellerAll/${usertype}`)
+            fetch(`https://book-trekker-server-side.vercel.app/allusers/sellerAll/${usertype}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);

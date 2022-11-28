@@ -10,7 +10,7 @@ const Advertisement = () => {
     const { user } = useContext(AuthContext);
     const { data: product, isLoading } = useQuery({
         queryKey: ['product'],
-        queryFn: () => fetch('http://localhost:5000/adCollection')
+        queryFn: () => fetch('https://book-trekker-server-side.vercel.app/adCollection')
             .then(res => res.json())
     })
 

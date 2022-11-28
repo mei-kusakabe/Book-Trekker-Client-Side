@@ -19,7 +19,7 @@ const CategoryDetails = () => {
 
     // const { name: treatmentName, slots, price } = treatment;
 
-    // const url = `http://localhost:5000/allusers/seller/${user.email}`;
+    // const url = `https://book-trekker-server-side.vercel.app/allusers/seller/${user.email}`;
 
     // const { data: users = [] } = useQuery({
     //     queryKey: ['users', user?.email],
@@ -33,7 +33,7 @@ const CategoryDetails = () => {
     // console.log(users);
 
 
-    const url = "http://localhost:5000/allusers";
+    const url = "https://book-trekker-server-side.vercel.app/allusers";
 
     const [users, setAlluser] = React.useState([]);
 
@@ -102,7 +102,6 @@ const CategoryDetails = () => {
     return (
         <div className='services m-5'>
 
-            {/* <div className='p-2 list rounded  justify-content-center align-items-center service-page-list'> */}
 
             <div className='book-all m-5 border-0 justify-content-center align-items-center'>
                 {
@@ -126,7 +125,6 @@ const CategoryDetails = () => {
                                 <p className='px-3 card-text'><span className='fw-bold' style={{ textDecoration: 'none', color: "#497174" }}>Sellers Name:</span>  {book?.SellerName}</p>
 
                                 {
-
                                     users.map((user) => <div className='' key={user._id}>
                                         {
 
@@ -134,7 +132,6 @@ const CategoryDetails = () => {
 
                                                 <FaCheck className="bg-primary text-white rounded h-50 w-100"></FaCheck>
                                                 : <></>
-
                                         }
                                     </div>
                                     )

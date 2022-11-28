@@ -1,17 +1,17 @@
 .order {
     border: 1px solid #E6E5A3;
-    border-radius: 5px;
-    padding-bottom: 20px;
+    border-rorderius: 5px;
+    porderding-bottom: 20px;
     overflow-x: hidden;
 
 }
 
-/* .orders {
-   
-background-color: #EFF5F5;
-}
 
-*/
+
+.orders {
+    /* background-color: #A9AF7E; */
+    background-color: #EFF5F5;
+}
 
 .order img {
     height: 250px;
@@ -28,7 +28,7 @@ background-color: #EFF5F5;
 .link {
     text-decoration: none;
     margin-right: 12px;
-    padding: 3px 6px;
+    porderding: 3px 6px;
     color: #EFF5F5;
 
 }
@@ -53,8 +53,8 @@ background-color: #EFF5F5;
     color: white;
     /* background: #557153; */
     background: #EB6440;
-    padding: 5px 10px;
-    border-radius: 5px;
+    porderding: 5px 10px;
+    border-rorderius: 5px;
     text-decoration: none;
 }
 
@@ -71,21 +71,16 @@ background-color: #EFF5F5;
 
 .order-all {
     display: grid;
-    grid-template-columns: repeat(1, 3fr);
+    grid-template-columns: repeat(2, 3fr);
     gap: 15px;
 
 }
 
 
 
+
 /* for-small-devices*/
 @media screen and (max-width:480px) {
-
-    /* .topic-container {
-        display: grid;
-        grid-template-columns: repeat(1, 2fr);
-        gap: 45px;
-    } */
 
     .order img {
         height: 150px;
@@ -101,13 +96,6 @@ background-color: #EFF5F5;
 /* for-tablet-devices */
 
 @media (min-width: 481px) and (max-width : 1200px) {
-
-    /* .topic-container {
-        display: grid;
-        grid-template-columns: repeat(2, 2fr);
-        gap: 25px;
-    } */
-
     .order img {
         height: 150px;
         width: 350px;
@@ -132,7 +120,6 @@ background-color: #EFF5F5;
     .list {
         display: inline;
     }
-
 }
 
 /* for-tablet-devices */
@@ -155,7 +142,3 @@ background-color: #EFF5F5;
     }
 
 }
-
-/* .course-btn {
-    background-color: #5837D0;
-} */

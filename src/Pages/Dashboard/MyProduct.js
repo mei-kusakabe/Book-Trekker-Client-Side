@@ -13,9 +13,9 @@ const MyProduct = () => {
 
 
 
-    //fetch(`http://localhost:5000/allusers/seller/${email}`)
+    //fetch(`https://book-trekker-server-side.vercel.app/allusers/seller/${email}`)
 
-    const url = `http://localhost:5000/allbookscategory/seller/${user.displayName}`;
+    const url = `https://book-trekker-server-side.vercel.app/allbookscategory/seller/${user.displayName}`;
 
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products', user?.displayName],
@@ -40,7 +40,7 @@ const MyProduct = () => {
         }
 
 
-        fetch('http://localhost:5000/adCollection', {
+        fetch('https://book-trekker-server-side.vercel.app/adCollection', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -62,7 +62,7 @@ const MyProduct = () => {
     const handleDelete = p => {
         const proceed = window.confirm('Are you sure you want to delete this product?');
         if (proceed) {
-            fetch(`http://localhost:5000/allbookscategory/${p._id}`, {
+            fetch(`https://book-trekker-server-side.vercel.app/allbookscategory/${p._id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('book-trekker-token')}`

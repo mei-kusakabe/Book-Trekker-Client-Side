@@ -48,7 +48,7 @@ const AddProduct = () => {
 
         console.log(product);
 
-        fetch('http://localhost:5000/allbookscategory', {
+        fetch('https://book-trekker-server-side.vercel.app/allbookscategory', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -59,13 +59,9 @@ const AddProduct = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-
-                    //form.reset();
                     toast('Product  Added Successfully!');
-
                     navigate('/dashboard/myproduct');
 
-                    //lert('Service Added Successfully!')
                 }
             })
             .catch(error => console.error(error));
@@ -74,13 +70,12 @@ const AddProduct = () => {
     return (
         <div>
 
-            <h2 className='fst-italic'>Please Add a Product..</h2>
+            <h3 className='fw-bold fs-2 py-3' style={{ textDecoration: 'none', color: "#EB6440", textDecorationColor: "#EB6440" }} >Please Add a Product..</h3>
 
             <form onSubmit={handleProduct} className="d-flex flex-column justify-content-center align-items-center my-3 px-3 py-5  border shadow-lg rounded-3 bg-light  mx-5">
 
                 <div className='row row-cols-1 row-cols-lg-2 gap-4'>
                     <input name="name" type="text" placeholder="Product Name" className="input border shadow mx-auto p-3 rounded" />
-                    {/* <input name="title" type="text" placeholder="Product Category Name" className="input border shadow mx-auto p-3 rounded" /> */}
                     <label for="title" >Choose Category:</label>
                     <select id="title" name="CategoryId" className="input border shadow mx-auto p-3 rounded w-50" size="3">
                         <option value="637ff22e7fbc105d1cb18575">CHILDREN'S BOOKS</option>
@@ -88,7 +83,6 @@ const AddProduct = () => {
                         <option value="637ff22e7fbc105d1cb18577">RELIGION & SPIRITUALITY</option>
                     </select>
 
-                    {/* <input name="CategoryId" type="text" placeholder="Product Category ID" className="input border shadow mx-auto p-3 rounded" /> */}
                     <input name="pic" type="text" placeholder="Photo URL" className="input border shadow mx-auto p-3 rounded" />
                     <textarea name="description" className="input border shadow mx-auto p-3 rounded w-50" placeholder="Description" required></textarea>
                     <input name="YearofPurchase" type="text" placeholder="Year of Purchase" className="input border shadow mx-auto p-3 rounded" />

@@ -20,86 +20,32 @@ const DashboardLayout = () => {
 
     //const [isAdmin] = useAdmin(user?.email)
     return (
-        <div>
+        <div >
             <Navbar></Navbar>
-            <div className="drawer drawer-mobile">
 
+            <div className='sg m-5 py-5'>
                 <Outlet></Outlet>
-                <div className="drawer-content">
 
-                </div>
-                {/* <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" /> */}
-
-                {/* <div className="drawer-side">
-                    <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 text-base-content">
-                        <li><Link to="/dashboard">My Appointments</Link></li>
-                        {
-                            // isAdmin &&
-                            <>
-                                <li><Link to="/dashboard/allusers">All users</Link></li>
-                                <li><Link to="/dashboard/adddoctor">Add A Doctor</Link></li>
-                                <li><Link to="/dashboard/managedoctors">Manage Doctors</Link></li>
-                            </>
-                        }
-
-                    </ul>
-
-                </div> */}
-
-                {/* <nav className="navbar navbar-light bg-light shadow">
-                    <div className="container-fluid">
-                        <span className="navbar-brand mb-0 h1">Menu App</span>
-
-                        <button className="navbar-toggler" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                    </div>
-                </nav>
-
-                <div className="modal true" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div className="modal-dialog modal-fullscreen">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">MENU</h5>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div className="modal-body">
-
-                                <ul className="list-group list-group-flush">
-                                    <li className="list-group-item">HOME</li>
-                                    <li className="list-group-item">DOCUMENTOS</li>
-                                    <li className="list-group-item">APLICATIVO</li>
-                                    <li className="list-group-item">CONTATOS</li>
-                                    <li className="list-group-item">SOBRE</li>
-                                </ul>
-
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-
-
-                <div className="text-start w-25 ms-5">
+                <div className="text-start mx-5 ">
+                    <h3 className='fw-bold fs-2 py-3' style={{ textDecoration: 'none', color: "#EB6440", textDecorationColor: "#EB6440" }} >Welcome to DashBoard..</h3>
                     <table className='mx-auto text-black  shadow'>
                         <tr>
-                            <th>Visit </th>
+                            <th>
+                                <h3 className=''>Visit</h3>
+                            </th>
                         </tr>
                         <tbody className=''>
 
                             {
                                 isAdmin && <>
                                     <tr>
-                                        <td><Link className="button1  fw-bold my-2 border shadow" to="/dashboard/allseller">All Seller</Link></td>
+                                        <td><Link className="button1 fw-bold border shadow" to="/dashboard/allseller">All Seller</Link></td>
                                     </tr>
                                     <tr>
-                                        <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/allbuyer">All Buyer</Link></td>
+                                        <td><Link className="button1 fw-bold border shadow" to="/dashboard/allbuyer">All Buyer</Link></td>
                                     </tr>
                                     <tr>
-                                        <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/reportedItem">Reported Item</Link></td>
+                                        <td><Link className="button1 fw-bold border shadow" to="/">Report Item</Link></td>
                                     </tr>
                                 </>
                             }
@@ -108,8 +54,10 @@ const DashboardLayout = () => {
                                 isBuyer ?
                                     <>
                                         <tr>
-                                            <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/myorder">My Order</Link></td>
-                                            <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/mywishlist" >My WishList</Link></td>
+                                            <td><Link className="button1 fw-bold border shadow" to="/dashboard/myorder">My Order</Link></td>
+                                        </tr>
+                                        <tr>
+                                            <td><Link className="button1 fw-bold border shadow" to="/dashboard/mywishlist" >WishList</Link></td>
 
                                         </tr>
                                     </>
@@ -117,18 +65,17 @@ const DashboardLayout = () => {
                                     <></>
                             }
 
-
                             {
                                 isSellerAll || isSeller ?
                                     <>
                                         <tr>
-                                            <td><Link className="button1  fw-bold my-2 border shadow" to="/dashboard/addproduct">Add Products</Link></td>
+                                            <td><Link className="button1   border shadow h6" to="/dashboard/addproduct"><small>Add Product</small></Link></td>
                                         </tr>
                                         <tr>
-                                            <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/myproduct">My Products</Link></td>
+                                            <td><Link className="button1 border shadow h6" to="/dashboard/myproduct">My Product</Link></td>
                                         </tr>
                                         <tr>
-                                            <td><Link className="button1   fw-bold my-2 border shadow" to="/dashboard/allbuyer">My Buyer</Link></td>
+                                            <td><Link className="button1 border shadow h6" aria-disabled to="/dashboard/allbuyer">My Buyer</Link></td>
                                         </tr>
                                     </>
                                     :
@@ -139,6 +86,8 @@ const DashboardLayout = () => {
                     </table>
                 </div>
             </div>
+
+
         </div >
     );
 };

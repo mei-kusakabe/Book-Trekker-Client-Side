@@ -20,6 +20,7 @@ import AdminRoute from '../AdminRoute/AdminRoute';
 import BuyerRoute from '../BuyerRoute/BuyerRoute';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import SellerRoute from '../SellerRoute/SellerRoute';
+import ReportItem from '../../Pages/Dashboard/ReportItem/ReportItem';
 
 
 export const routes = createBrowserRouter([
@@ -54,7 +55,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/allbookscategory/:CategoryId',
                 element: <PrivateRoute><CategoryDetails></CategoryDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/allbookscategory/${params.CategoryId}`)
+                loader: ({ params }) => fetch(`https://book-trekker-server-side.vercel.app/allbookscategory/${params.CategoryId}`)
             },
             {
                 path: '/blog',

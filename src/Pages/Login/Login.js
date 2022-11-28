@@ -63,7 +63,7 @@ const Login = () => {
                     .catch(error => console.error(error));
 
                 // get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://book-trekker-server-side.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -114,7 +114,7 @@ const Login = () => {
 
 
                 // get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://book-trekker-server-side.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -150,7 +150,7 @@ const Login = () => {
         // const name = displayName;
         const userinfo = { email, name: displayName, photoURL, usertype }
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://book-trekker-server-side.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -179,7 +179,7 @@ const Login = () => {
         // const name = displayName;
         const userinfo = { email, name: displayName, photoURL, usertype, inrole: usertype }
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://book-trekker-server-side.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import toast from 'react-hot-toast';
-import { Link, useLoaderData, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLoaderData, useNavigate } from 'react-router-dom';
 import useAdmin from '../../hooks/useAdmin';
 import useSeller from '../../hooks/useSeller';
 import { AuthContext } from '../Contexts/AuthProvider';
@@ -42,7 +42,7 @@ const ModalComponent = ({ book, price, img, books }) => {
         console.log(bookings);
 
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://book-trekker-server-side.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -55,8 +55,8 @@ const ModalComponent = ({ book, price, img, books }) => {
                 if (data.acknowledged) {
 
                     form.reset();
-                    toast('Successfully Booked!');
-                    //lert('Service Added Successfully!')
+                    toast.success('Successfully Booked!');
+                    navigate('/dashboard/myorder');
                 }
             })
             .catch(error => console.error(error));
@@ -65,7 +65,7 @@ const ModalComponent = ({ book, price, img, books }) => {
 
     // const handleWish = () => {
 
-    //     fetch('http://localhost:5000/wishlists', {
+    //     fetch('https://book-trekker-server-side.vercel.app/wishlists', {
     //         method: 'PUT',
     //         headers: {
     //             'content-type': 'application/json'
@@ -85,7 +85,7 @@ const ModalComponent = ({ book, price, img, books }) => {
     //         .catch(error => console.error(error));
 
 
-    //     fetch('http://localhost:5000/allbookscategory', {
+    //     fetch('https://book-trekker-server-side.vercel.app/allbookscategory', {
     //         method: 'POST',
     //         headers: {
     //             'content-type': 'application/json'
@@ -125,7 +125,7 @@ const ModalComponent = ({ book, price, img, books }) => {
         }
 
 
-        fetch('http://localhost:5000/wishCollection', {
+        fetch('https://book-trekker-server-side.vercel.app/wishCollection', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -224,7 +224,7 @@ const ModalComponent = ({ book, price, img, books }) => {
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <button onClick={handleClose} className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow">Save Changes</button>
+                        {/* <button onClick={handleClose} className="button1 px-5  text-white mx-3 fw-bold my-2 border shadow">Save Changes</button> */}
                     </Modal.Footer>
 
                 </Modal>

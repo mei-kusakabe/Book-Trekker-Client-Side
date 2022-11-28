@@ -12,7 +12,7 @@ const Categories = () => {
     //  useTitle('Services')
     // const [categories, setCategories] = useState([]);
     // useEffect(() => {
-    //     fetch('http://localhost:5000/categories')
+    //     fetch('https://book-trekker-server-side.vercel.app/categories')
     //         .then(res => res.json())
     //         .then(data => setCategories(data))
     // }, []);
@@ -24,7 +24,7 @@ const Categories = () => {
     const { data: categories = [] } = useQuery({
         queryKey: ['categories'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/categories');
+            const res = await fetch('https://book-trekker-server-side.vercel.app/categories');
             const data = await res.json();
             return data;
         }

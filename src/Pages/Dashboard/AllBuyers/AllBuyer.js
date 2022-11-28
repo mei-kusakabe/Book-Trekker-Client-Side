@@ -8,10 +8,8 @@ const AllBuyer = () => {
 
     const { user, logOut } = useContext(AuthContext);
 
-    //const url = `http://localhost:5000/userstype?usertype=${user?.usertype}`;
 
-
-    const url = `http://localhost:5000/userstype?usertype=Buyer`;
+    const url = `https://book-trekker-server-side.vercel.app/userstype?usertype=Buyer`;
 
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users', user?.email],
@@ -39,7 +37,7 @@ const AllBuyer = () => {
     const handleDelete = user => {
         const proceed = window.confirm('Are you sure you want to delete this buyer?');
         if (proceed) {
-            fetch(`http://localhost:5000/allusers/${user._id}`, {
+            fetch(`https://book-trekker-server-side.vercel.app/allusers/${user._id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('book-trekker-token')}`
@@ -57,30 +55,11 @@ const AllBuyer = () => {
     }
 
 
-    // const handleDeleteDoctor = doctor => {
-    //     fetch(`https://doctors-portal-server-rust.vercel.app/doctors/${doctor._id}`, {
-    //         method: 'DELETE',
-    //         headers: {
-    //             authorization: `bearer ${localStorage.getItem('accessToken')}`
-    //         }
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.deletedCount > 0) {
-    //                 refetch();
-    //                 toast.success(`Doctor ${doctor.name} deleted successfully`)
-    //             }
-    //         })
-    // }
-
-
-
-
-
-
     return (
-        <div>
-
+        <div className='container my-5'>
+            {
+                users?.length ? <h3 className='fw-bold fs-2 py-3' style={{ textDecoration: 'none', color: "#EB6440", textDecorationColor: "#EB6440" }} >All Buyers From Book-Trekker</h3> : <h3 className='d-none'>none</h3>
+            }
             <table className='mx-auto text-black'>
                 <tr>
                     <th>No.</th>

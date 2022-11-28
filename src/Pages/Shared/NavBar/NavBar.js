@@ -24,7 +24,7 @@ const NavBar = () => {
     //const axios = require('axios'); // legacy way
 
     // Make a request for a user with a given ID
-    // axios.get(`http://localhost:5000/users?email=${user?.email}`)
+    // axios.get(`https://book-trekker-server-side.vercel.app/users?email=${user?.email}`)
     //     .then(function (response) {
     //         // handle success
     //         console.log(response.data);
@@ -43,7 +43,7 @@ const NavBar = () => {
     //console.log(services);
 
 
-    // const url = `http://localhost:5000/users?email=${user?.email}`;
+    // const url = `https://book-trekker-server-side.vercel.app/users?email=${user?.email}`;
 
     // const { data: usersC = [] } = useQuery({
     //     queryKey: ['usersC', user?.email],

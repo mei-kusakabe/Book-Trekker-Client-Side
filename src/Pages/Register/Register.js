@@ -68,7 +68,7 @@ const Register = () => {
     // const saveUser = (name, email, photoURL, usertype) => {
     //     const user = { name, email, photoURL, usertype };
 
-    //     fetch('http://localhost:5000/users', {
+    //     fetch('https://book-trekker-server-side.vercel.app/users', {
     //         method: 'POST',
     //         headers: {
     //             'content-type': 'application/json'
@@ -95,7 +95,7 @@ const Register = () => {
     const saveUser = (name, email, photoURL, usertype, inrole) => {
         const user = { name, email, photoURL, usertype, inrole };
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://book-trekker-server-side.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

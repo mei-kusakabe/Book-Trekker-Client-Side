@@ -6,7 +6,7 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 const MyWishlist = () => {
 
     const { user, logOut } = useContext(AuthContext);
-    const url = `http://localhost:5000/wishCollection/${user.uid}`;
+    const url = `https://book-trekker-server-side.vercel.app/wishCollection/${user.uid}`;
 
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products', user?.uid],
@@ -29,7 +29,7 @@ const MyWishlist = () => {
         // }
 
 
-        // fetch('http://localhost:5000/adCollection', {
+        // fetch('https://book-trekker-server-side.vercel.app/adCollection', {
         //     method: 'PUT',
         //     headers: {
         //         'content-type': 'application/json'
@@ -47,8 +47,10 @@ const MyWishlist = () => {
     return (
         <div className='container my-5'>
 
-
-            <table className='mx-auto text-black'>
+            {
+                products?.length ? <h3 className='fw-bold fs-2 py-3' style={{ textDecoration: 'none', color: "#EB6440", textDecorationColor: "#EB6440" }} >Your WishList..</h3> : <h3 className='d-none'>No Wish List Availabl</h3>
+            }
+            <table className='mx-auto text-black sg'>
                 <tr>
                     <th>No.</th>
                     <th>Product Image</th>
