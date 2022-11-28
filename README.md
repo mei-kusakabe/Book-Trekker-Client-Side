@@ -14,11 +14,11 @@ price
 5) Admin can see All sellers. All Buyers. Admin can verify seller by giving “role: Seller”. Admin can delete buyers or Sellers.
 6) Seller can add products, advertise his product
 7) Buyer can see My Orders, Wishlist
-6) 404 route has also been declared. 
-7).11) I have used react-bootstrap, vanilla CSS for design purposes.
-12) I have used firebase, react libraries, etc. for this project.
+8) 404 route has also been declared. 
+9)I have used react-bootstrap, vanilla CSS for design purposes.
+10) I have used firebase, react libraries, etc. for this project.
 Technology Used: Html, CSS, Bootstrap, ReactBootstrap,ReactJs, Node.js, MongoDB, Firebase, GitHub, vercel
-Live-website : https://book-trekker.web.app/
+
 
 ### ` adminEmail: ` admin123@gmail.com
 ### ` adminPassword: ` 123456
