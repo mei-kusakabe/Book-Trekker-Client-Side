@@ -1,36 +1,15 @@
-import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React, { useContext, useState } from 'react';
-import { Button, Form, Modal } from 'react-bootstrap';
-import toast from 'react-hot-toast';
+import React from 'react';
 import { FaCheck } from 'react-icons/fa';
-import { Link, useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../Contexts/AuthProvider';
+import { useLoaderData } from 'react-router-dom';
+// import { AuthContext } from '../Contexts/AuthProvider';
 import ModalComponent from '../ModalComponent/ModalComponent';
 import './Categories.css'
 
 const CategoryDetails = () => {
 
     const books = useLoaderData();
-    const { user } = useContext(AuthContext)
-
-
-    //console.log(user);
-
-    // const { name: treatmentName, slots, price } = treatment;
-
-    // const url = `https://book-trekker-server-side.vercel.app/allusers/seller/${user.email}`;
-
-    // const { data: users = [] } = useQuery({
-    //     queryKey: ['users', user?.email],
-    //     queryFn: async () => {
-    //         const res = await fetch(url);
-    //         const data = await res.json();
-    //         return data;
-    //     }
-    // })
-
-    // console.log(users);
+    // const { user } = useContext(AuthContext)
 
 
     const url = "https://book-trekker-server-side.vercel.app/allusers";
@@ -43,61 +22,10 @@ const CategoryDetails = () => {
         });
     }, []);
 
-    // const handleBooking = event => {
-    //     event.preventDefault();
-    //     const form = event.target;
-    //     const loc = form.loc.value;
-    //     const name = user?.displayName;
-    //     const email = user?.email;
-    //     const phone = form.phone.value;
-    //     const Bookname = form.Bookname.value;
-    //     const price = form.price.value;
 
-    //     // [3, 4, 5].map((value, i) => console.log(value))
-    //     const booking = {
-    //         // appointmentDate: date,
-    //         // treatment: treatmentName,
-    //         // patient: name,
-    //         // slot,
-    //         name,
-    //         loc,
-    //         email,
-    //         phone,
-    //         price,
-    //         Bookname
-    //     }
-
-    //     console.log(booking);
-
-    // TODO: send data to the server
-    // and once data is saved then close the modal 
-    // and display success toast
-    // fetch('https://doctors-portal-server-rust.vercel.app/bookings', {
-    //     method: 'POST',
-    //     headers: {
-    //         'content-type': 'application/json'
-    //     },
-    //     body: JSON.stringify(booking)
-    // })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         console.log(data);
-    //         if (data.acknowledged) {
-    //             setTreatment(null);
-    //             toast.success('Booking confirmed');
-    //             refetch();
-    //         }
-    //         else {
-    //             toast.error(data.message);
-    //         }
-    //     })
-
-
-    //}
-
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // const [show, setShow] = useState(false);
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
 
     return (
         <div className='services m-5'>

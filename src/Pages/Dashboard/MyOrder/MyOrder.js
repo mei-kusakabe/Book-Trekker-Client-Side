@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import './MyOrder.css'
 
 const MyOrder = () => {
 
-    const { user, logOut } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     // const [mybook, bookings] = useState([]);
 
     // useEffect(() => {

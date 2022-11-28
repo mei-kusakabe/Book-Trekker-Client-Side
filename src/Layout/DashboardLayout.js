@@ -69,13 +69,13 @@ const DashboardLayout = () => {
                                 isSellerAll || isSeller ?
                                     <>
                                         <tr>
-                                            <td><Link className="button1   border shadow h6" to="/dashboard/addproduct"><small>Add Product</small></Link></td>
+                                            <td><Link className="button1 fw-bold border shadow h6" to="/dashboard/addproduct"><small>Add Product</small></Link></td>
                                         </tr>
                                         <tr>
-                                            <td><Link className="button1 border shadow h6" to="/dashboard/myproduct">My Product</Link></td>
+                                            <td><Link className="button1 fw-bold border shadow h6" to="/dashboard/myproduct">My Product</Link></td>
                                         </tr>
                                         <tr>
-                                            <td><Link className="button1 border shadow h6" aria-disabled to="/dashboard/allbuyer">My Buyer</Link></td>
+                                            <td><Link className="button1 fw-bold border shadow h6" aria-disabled to="/dashboard/allbuyer">My Buyer</Link></td>
                                         </tr>
                                     </>
                                     :
