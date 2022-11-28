@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { Image } from 'react-bootstrap';
+import toast from 'react-hot-toast';
 import { FaCheck } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
@@ -16,7 +17,7 @@ const MyProduct = () => {
 
     const url = `http://localhost:5000/allbookscategory/seller/${user.displayName}`;
 
-    const { data: products = [] } = useQuery({
+    const { data: products = [], refetch } = useQuery({
         queryKey: ['products', user?.displayName],
         queryFn: async () => {
             const res = await fetch(url);
@@ -56,6 +57,26 @@ const MyProduct = () => {
 
     }
 
+    const handleDelete = p => {
+        const proceed = window.confirm('Are you sure you want to delete this product?');
+        if (proceed) {
+            fetch(`http://localhost:5000/allbookscategory/${p._id}`, {
+                method: 'DELETE',
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('book-trekker-token')}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        refetch();
+                        toast.success(`Product ${p.name} deleted successfully`)
+                    }
+                })
+        }
+    }
+
 
 
     return (
@@ -72,6 +93,8 @@ const MyProduct = () => {
                     <th>Condition</th>
                     <th>Sale Status</th>
                     <th>Advertise</th>
+                    <th>Delete</th>
+
                 </tr>
 
                 <tbody>
@@ -91,6 +114,8 @@ const MyProduct = () => {
                             <td>{product.condition}</td>
                             <td>Available</td>
                             <td><button onClick={() => handleAdvertise(product)} className="button1 fw-bold my-2 border shadow">Advertise</button></td>
+                            <td><button onClick={() => handleDelete(product)} className="button1 fw-bold my-2 border shadow">Delete Product</button></td>
+
                             {/* <td><Link className="button1 fw-bold my-2 border shadow" to="/">Delete</Link></td> */}
 
                         </tr>)
