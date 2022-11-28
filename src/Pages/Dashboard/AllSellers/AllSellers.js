@@ -21,9 +21,6 @@ const AllSellers = () => {
     //     }
     // })
 
-
-    const url = `http://localhost:5000/userstype?usertype=Seller`;
-
     // const [users, setuser] = useState([]);
 
     // useEffect(() => {
@@ -32,6 +29,8 @@ const AllSellers = () => {
     //     });
     // }, []);
 
+
+    const url = `http://localhost:5000/userstype?usertype=Seller`;
 
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
@@ -58,10 +57,29 @@ const AllSellers = () => {
                 }
             })
     }
+    const handleDelete = user => {
+        const proceed = window.confirm('Are you sure you want to delete this seller?');
+        if (proceed) {
+            fetch(`http://localhost:5000/allusers/${user._id}`, {
+                method: 'DELETE',
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('book-trekker-token')}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        refetch();
+                        toast.success(`Seller ${user.name} deleted successfully`)
+                    }
+                })
+        }
+    }
 
     /// console.log(users);
     return (
-        <div>
+        <div className='container my-5'>
             <table className='mx-auto text-black'>
                 <tr>
                     <th>No.</th>
@@ -76,24 +94,28 @@ const AllSellers = () => {
                     {
                         users.map((user, i) => <tr key={user._id}>
                             <th>{i + 1}</th>
-                            <td>{user.name} </td>
+
+                            <td>
+                                <div className='d-inline d-lg-flex d-flex'>
+                                    <td className='text-end'>{user.name} </td>
+                                    {
+                                        user?.role === 'seller' ?
+                                            <td className=''>
+                                                <FaCheck className="bg-primary text-white rounded h-50 w-100"></FaCheck>
+                                            </td>
+                                            :
+
+                                            <td className='d-none'>
+                                                <FaCheck></FaCheck>
+                                            </td>
+
+                                    }
+                                </div>
+
+                            </td>
 
                             <td>{user.email}</td>
 
-                            <td>
-                                {
-                                    user?.role === 'seller' ?
-                                        <td className=''>
-                                            <FaCheck className="bg-primary text-white rounded h-50 w-100"></FaCheck>
-                                        </td>
-                                        :
-
-                                        <td className='d-none'>
-                                            <FaCheck></FaCheck>
-                                        </td>
-
-                                }
-                            </td>
                             <td><button onClick={() => handleVerifySeller(user._id)} className="button1 fw-bold my-2 border shadow">Verify</button></td>
                             <td>
 
@@ -112,7 +134,7 @@ const AllSellers = () => {
 
                             </td>
 
-                            <td><Link className="button1 fw-bold my-2 border shadow" to="/">Delete</Link></td>
+                            <td><button onClick={() => handleDelete(user)} className="button1 fw-bold my-2 border shadow">Delete</button></td>
 
                         </tr>)
                     }
