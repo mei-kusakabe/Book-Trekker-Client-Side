@@ -3,8 +3,9 @@ body {
 }
 
 .rare {
-    background-color: #ebf4fa;
+    background-color: #EFF5F5;
 }
+
 
 @media (max-width: 991px) {
     .about-text {
@@ -95,7 +96,7 @@ body {
 
 .about-img {
     box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.06);
-    padding: 10px;
+    padding: 0px;
     background: #ffffff;
 }
 

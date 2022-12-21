@@ -2,6 +2,11 @@ body {
     margin-top: 20px;
 }
 
+.about {
+    /* background-color: #8594e4; */
+    background-color: #EFF5F5;
+}
+
 @media (max-width: 991px) {
     .about-text {
         margin-top: 40px;

@@ -1,8 +1,9 @@
 import React from 'react';
+import './RareBooks.css'
 
 const RareBooks = () => {
     return (
-        <section className="section about-section rare" id="rare">
+        <section className="section about-section rare m-5" id="rare">
             <div className="container">
                 <div className="row align-items-center justify-content-around flex-row-reverse">
                     <div className="col-lg-6">

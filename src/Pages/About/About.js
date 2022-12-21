@@ -3,7 +3,7 @@ import './About.css'
 
 const About = () => {
     return (
-        <section className="section about-section " id="about">
+        <section className="section about-section about m-5" id="about">
             <div className="container">
                 <div className="row align-items-center justify-content-around flex-row-reverse">
                     <div className="col-lg-6">
@@ -15,7 +15,7 @@ const About = () => {
                     </div>
                     <div className="col-lg-5 text-center">
                         <div className="about-img">
-                            <img src="https://as1.ftcdn.net/v2/jpg/01/57/44/42/1000_F_157444294_COaJreLoVUonknUYboQyiI0yelZi0uc2.jpg" className='w-75 rounded' alt="" />
+                            <img src="https://as1.ftcdn.net/v2/jpg/01/57/44/42/1000_F_157444294_COaJreLoVUonknUYboQyiI0yelZi0uc2.jpg" className='w-100 rounded' alt="" />
                         </div>
                     </div>
                 </div>
