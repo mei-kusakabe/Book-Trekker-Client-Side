@@ -54,10 +54,10 @@ const DashboardLayout = () => {
                                 isBuyer ?
                                     <>
                                         <tr>
-                                            <td><Link className="button1 fw-bold border shadow" to="/dashboard/myorder">My Order</Link></td>
+                                            <td><Link className="button1 fw-bold border shadow h6" to="/dashboard/myorder"><small>My Order</small></Link></td>
                                         </tr>
                                         <tr>
-                                            <td><Link className="button1 fw-bold border shadow" to="/dashboard/mywishlist" >WishList</Link></td>
+                                            <td><Link className="button1 fw-bold border shadow h6" to="/dashboard/mywishlist" >WishList</Link></td>
 
                                         </tr>
                                     </>

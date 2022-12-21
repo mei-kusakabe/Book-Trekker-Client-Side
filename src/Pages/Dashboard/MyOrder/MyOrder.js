@@ -61,7 +61,7 @@ const MyOrder = () => {
             <div className='order-all  border-0'>
                 {
                     bookings?.length ?
-                        bookings.map((booking, i) => <div className='order mx-5 teal-c text-center border-1 p-0 rounded shadow'
+                        bookings.map((booking, i) => <div className='order mx-auto mt-3 teal-c text-center border-1 p-0 rounded shadow'
                             key={i}>
 
                             {/* w-25 w-xl-50 w-lg-25 w-md-100 */}
@@ -81,7 +81,7 @@ const MyOrder = () => {
                         )
                         :
                         <>
-                            <h2>No Order has benn placed</h2>
+                            <h2>No Order has been placed</h2>
 
                         </>
                 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Zoom from 'react-reveal/Zoom';
 import './Banner.css'
 
 const Banner = () => {
@@ -14,7 +15,9 @@ const Banner = () => {
                         alt="Second slide"
                     />
                     <Carousel.Caption className='d-flex flex-column justify-content-center h-100 '>
-                        <h3 className='text-end ms-5 fw-bolder fs-2 nav-font cap' style={{ color: "#EB6440" }}>     "Good friends, good books, <br></br> and a sleepy conscience: <br></br> this is the ideal life."</h3>
+                        <Zoom>
+                            <h3 className='text-end ms-5 fw-bolder fs-2 nav-font cap' style={{ color: "#EB6440" }}>     "Good friends, good books, <br></br> and a sleepy conscience: <br></br> this is the ideal life."</h3>
+                        </Zoom>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -26,7 +29,9 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption className='d-flex flex-column justify-content-center h-100'>
-                        <h3 className='ms-5 fw-bolder nav-font fs-2 cap' style={{ color: "#EB6440" }}>"There is no friend as loyal as a book."</h3>
+                        <Zoom>
+                            <h3 className='ms-5 fw-bolder nav-font fs-2 cap' style={{ color: "#EB6440" }}>"There is no friend as loyal as a book."</h3>
+                        </Zoom>
                         <p className='d-none'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
@@ -38,7 +43,9 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption className='d-flex flex-column justify-content-center h-100'>
-                        <h3 className='ms-5 fw-bolder nav-font fs-2 cap' style={{ color: "#EB6440" }}>"Books are a uniquely portable magic."</h3>
+                        <Zoom>
+                            <h3 className='ms-5 fw-bolder nav-font fs-2 cap' style={{ color: "#EB6440" }}>"Books are a uniquely portable magic."</h3>
+                        </Zoom>
                         <p className='d-none'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
