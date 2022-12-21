@@ -6,7 +6,7 @@ const Contact = () => {
         <div className='container contact rounded shadow mx-auto px-5 py-1 my-5'>
 
             <section className="mb-4">
-                <h2 className="h1-responsive fw-bold text-center my-4 fst-italic title display-5" style={{ textDecoration: 'underline', color: "#EB6440" }}>Get in touch</h2>
+                <h2 className="h1-responsive fw-bold text-center my-4  title display-5" style={{ textDecoration: 'underline', color: "#EB6440" }}>Get in touch</h2>
 
                 {/* <p className="text-center w-responsive mx-auto mb-5 text-white fw-bold">Do you have any questions? Please do not hesitate to contact me directly. I will come back to you within
                     a matter of hours to help you.</p> */}
