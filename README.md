@@ -1,6 +1,6 @@
 ### `Project Name: Book Trekker`
 
-### `Live Website Link: ` [https://book-trekker.web.app/] (https://book-trekker.web.app/)
+### `Live Website Link: ` https://book-trekker.web.app/
 ### `Project Description: `
 
 
