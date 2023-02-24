@@ -1,7 +1,43 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import './RareBooks.css'
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
+import { gsap, Power3 } from 'gsap/gsap-core';
+import { delay } from 'framer-motion';
 
 const RareBooks = () => {
+    // let photoItem = useRef(null);
+    // let textItem = useRef(null);
+    // console.log(photoItem);
+
+    // useEffect(() => {
+    //     console.log(photoItem);
+    //     // photoItem.style.display = 'none'
+    //     gsap.to(
+    //         photoItem,
+    //         {
+
+    //             opacity: 1,
+    //             y: -20,
+    //             ease: Power3.easeOut
+
+    //         }
+    //     )
+    //     gsap.to(
+    //         textItem,
+    //         {
+
+    //             opacity: 1,
+    //             y: -20,
+    //             ease: Power3.easeOut,
+    //             delay: .2
+
+    //         }
+    //     )
+    // ref={el => { textItem = el }}
+    // ref={el => { photoItem = el }}
+    // }, [])
+
     return (
         <section className="section about-section rare m-5" id="rare">
             <div className="container">
@@ -16,7 +52,13 @@ const RareBooks = () => {
                     </div>
                     <div className="col-lg-5 text-center">
                         <div className="about-img">
-                            <img src="https://assets.brightspot.abebooks.a2z.com/dims4/default/e2b1e5e/2147483647/strip/true/crop/1000x694+0+0/resize/1600x1110!/format/webp/quality/90/?url=http%3A%2F%2Fabebooks-brightspot.s3.amazonaws.com%2Ffd%2F23%2F3ccb25fe49cbaa5464e5e6f9f71f%2Fcooks-voyages.jpg" className='w-100 rounded' alt="" />
+
+                            <PhotoProvider>
+                                <PhotoView src="https://assets.brightspot.abebooks.a2z.com/dims4/default/e2b1e5e/2147483647/strip/true/crop/1000x694+0+0/resize/1600x1110!/format/webp/quality/90/?url=http%3A%2F%2Fabebooks-brightspot.s3.amazonaws.com%2Ffd%2F23%2F3ccb25fe49cbaa5464e5e6f9f71f%2Fcooks-voyages.jpg">
+                                    <img className='rare1 w-100' src="https://assets.brightspot.abebooks.a2z.com/dims4/default/e2b1e5e/2147483647/strip/true/crop/1000x694+0+0/resize/1600x1110!/format/webp/quality/90/?url=http%3A%2F%2Fabebooks-brightspot.s3.amazonaws.com%2Ffd%2F23%2F3ccb25fe49cbaa5464e5e6f9f71f%2Fcooks-voyages.jpg" alt="" />
+                                </PhotoView>
+                            </PhotoProvider>
+                            {/* <img src="https://assets.brightspot.abebooks.a2z.com/dims4/default/e2b1e5e/2147483647/strip/true/crop/1000x694+0+0/resize/1600x1110!/format/webp/quality/90/?url=http%3A%2F%2Fabebooks-brightspot.s3.amazonaws.com%2Ffd%2F23%2F3ccb25fe49cbaa5464e5e6f9f71f%2Fcooks-voyages.jpg" className='w-100 rounded' alt="" /> */}
                         </div>
 
 

@@ -10,6 +10,15 @@
     width: 100%;
 }
 
+.log-reg-button {
+    color: white;
+    /* background: #557153; */
+    background: #497174;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
 .box2 {
     width: 100%;
     margin-left: 10px;

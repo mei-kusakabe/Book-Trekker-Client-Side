@@ -1,4 +1,5 @@
 .service {
+
     border: 1px solid #E6E5A3;
     border-radius: 5px;
     padding-bottom: 20px;
@@ -70,8 +71,16 @@
 .service-all {
     display: grid;
     grid-template-columns: repeat(3, 3fr);
-    gap: 15px;
+    gap: 55px;
 
+
+}
+
+.service:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+    /* box-shadow: 0 15px 10px -10px rgba(31, 31, 31, 0.5); */
+    /* transition: all 0.3s ease; */
 }
 
 

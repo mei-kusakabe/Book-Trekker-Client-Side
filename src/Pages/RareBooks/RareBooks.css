@@ -168,3 +168,22 @@ body {
     border: 2px solid #fe4f6c;
     color: #fe4f6c;
 }
+
+.rare1 {
+    animation: rare-spin infinite 20s linear;
+    opacity: 1;
+    /* height: 40vmin; */
+    /* pointer-events: none; */
+
+}
+
+@keyframes rare1-spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

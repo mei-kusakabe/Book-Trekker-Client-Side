@@ -9,6 +9,10 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import { FaGoogle, FaEnvelope, FaLock } from "react-icons/fa";
 import './Login.css'
 import useToken from '../../hooks/useToken';
+// import Typewriter from 'typewriter-effect';
+import Typewriter from 'react-ts-typewriter';
+
+
 
 const Login = () => {
 
@@ -205,14 +209,15 @@ const Login = () => {
 
     return (
 
-        <div className="container-fluid login my-3">
+        <div className="container-fluid login my-3 mb-5">
             <div className="rounded d-flex justify-content-center">
-                <div className="form col-md-4 col-sm-12 shadow-lg p-5 rounded  mt-3">
+                <div className="form col-md-4 col-sm-12 col-xs-12 shadow-lg p-5 rounded  mt-3">
                     <div className="text-center">
-                        <h3 className="text-white fw-bold fs-2">Please Log in!!</h3>
+                        <h3 className="fw-bold fs-2" style={{ textDecoration: 'none', color: "#497174" }}
+                        ><Typewriter text='Please Log in!!' /></h3>
                     </div>
                     <Form onSubmit={handleSubmit} className="mt-3 py-3 border shadow-lg rounded-3 bg-light box2">
-                        <div className="p-4">
+                        <div className="p-4 logbox">
                             <div className="input-group mb-3">
                                 <span className="input-group-text bg-light"> <FaEnvelope></FaEnvelope></span>
                                 <input type="email" className="form-control" name="email" placeholder="Email" />
@@ -221,7 +226,7 @@ const Login = () => {
                                 <span className="input-group-text bg-light"><FaLock></FaLock></span>
                                 <input type="password" className="form-control" name="password" placeholder="Password" />
                             </div>
-                            <Button variant="primary" className="btn-xl fw-bold" type="submit">Login</Button>
+                            <button className="btn-xl fw-bold log-reg-button border-0" type="submit">Login</button>
                             <Form.Text className="text-danger">
                                 {error}
                             </Form.Text>
@@ -229,13 +234,18 @@ const Login = () => {
                             <h5>OR</h5>
                             <div>
                                 <ButtonGroup vertical>
-                                    <Button onClick={handleGoogleSignIn} className='mb-2 fw-bold' variant="outline-primary"> <FaGoogle></FaGoogle> Login with Google</Button>
+                                    <Button onClick={handleGoogleSignIn} className='mb-2 fw-bold log-reg-button'> <FaGoogle className='fw-bold me-2'></FaGoogle> Login with Google</Button>
                                 </ButtonGroup>
                             </div>
-                            <p className='mt-3'>Need an Account? </p>
-                            <Link to="/register"> <span className='fw-bold text-black'> Click here to Register</span></Link>
+                            <p className='mt-3'>Need an Account? <Link to="/register"> <span className='fw-bold text-primary'><small>Click here to Register</small></span></Link></p>
+
+                            {/* <p className='mt-3'>Need an Account? </p> */}
+                            {/* <Link to="/register"> <span className='fw-bold text-primary'><small>Click here to Register</small> </span></Link> */}
                         </div>
                     </Form>
+
+
+
                 </div>
             </div>
         </div>

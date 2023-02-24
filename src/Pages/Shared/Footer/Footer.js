@@ -14,9 +14,6 @@ const Footer = () => {
                             <li>Home</li>
                             <li>Services</li>
                             <li>About</li>
-                            <li>Code</li>
-                            <li>Design</li>
-                            <li>Host</li>
                             <li>Contact</li>
                             <li>Company</li>
                         </ul>
@@ -41,7 +38,7 @@ const Footer = () => {
                                 <img src="http://placehold.it/64x64" alt="" className="media-object" />
                             </Link> */}
                             <div className="media-body">
-                                <h4 className="media-heading">Coding</h4>
+                                <h4 className="media-heading">Affordable Books</h4>
                                 <p>Book Trekker sells millions of used books at the lowest everyday prices.
                                     We personally assess every book's quality and offer rare, out-of-print
                                     treasures. We deliver the joy of reading in 100% recyclable packaging with

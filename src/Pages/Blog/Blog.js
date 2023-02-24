@@ -1,13 +1,35 @@
 import React from 'react';
 import './Blog.css'
+import AnimatedText from 'react-animated-text-content';
 
 const Blog = () => {
     return (
         <div className='container mb-5 py-5 blog border rounded'>
             <section className="container" id="faq">
                 <div className="blog-header text-center">
-                    <h1 className="display-5 fw-bold py-5" style={{ textDecoration: 'underline', color: "#EB6440" }}>Blog Page
-                    </h1>
+
+                    <AnimatedText
+                        type="words" // animate words or chars
+                        animation={{
+                            x: '200px',
+                            y: '-20px',
+                            scale: 1.1,
+                            ease: 'ease-in-out',
+                        }}
+                        animationType="float"
+                        interval={0.06}
+                        duration={0.8}
+                        style={{ textDecoration: 'none', color: "#EB6440" }}
+                        //tag="p"
+                        className="animated-paragraph display-5 fw-bold py-5"
+                        includeWhiteSpaces
+                        threshold={0.1}
+                        rootMargin="20%"
+                    >
+                        Blog Page
+                    </AnimatedText>
+                    {/* <h1 className="display-5 fw-bold py-5" style={{ textDecoration: 'underline', color: "#EB6440" }}>Blog Page
+                    </h1> */}
                 </div>
                 <section className="blog-body">
                     <div className="accordion" id="accordionPanelsStayOpenExample">

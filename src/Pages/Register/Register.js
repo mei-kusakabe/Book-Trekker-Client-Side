@@ -7,6 +7,8 @@ import useToken from '../../hooks/useToken';
 import { AuthContext } from '../Contexts/AuthProvider';
 //import useTitle from '../hooks/useTitle';
 import "./Register.css"
+import Typewriter from 'react-ts-typewriter';
+
 const Register = () => {
     // useTitle('Register')
     const [error, setError] = useState('');
@@ -132,7 +134,8 @@ const Register = () => {
                 <div className="rounded d-flex justify-content-center">
                     <div className="form col-md-4 col-sm-12 shadow-lg p-5 rounded  mt-2">
                         <div className="text-center">
-                            <h3 className="text-white fw-bold fs-2">Welcome to Register Page!!</h3>
+                            <h3 className="fw-bold fs-2" style={{ textDecoration: 'none', color: "#497174" }}
+                            ><Typewriter text='Welcome to Register Page!!' /></h3>
                         </div>
                         <Form onSubmit={handleSubmit} className="d-flex flex-column justify-content-center align-items-center border shadow-lg rounded-3 bg-light ">
                             <div className="p-4">
@@ -155,19 +158,21 @@ const Register = () => {
                                 </div>
 
                                 <label for="usertype" className='input-group-text px-3' >Register as:</label>
-                                <select id="usertype" name="usertype" className="input border shadow mx-auto px-3 rounded w-100 h-25" size="1" required>
+                                <select id="usertype" name="usertype" className="input border shadow mx-auto px-3 py-2 rounded w-100 h-25" size="1" required>
                                     <option value="Buyer">Buyer</option>
                                     <option value="Seller">Seller</option>
                                 </select>
                                 <br></br>
 
-                                <Button variant="primary" className="btn-xl fw-bold mt-3" type="submit" > Register</Button>
+                                {/* <Button variant="primary" className="btn-xl fw-bold mt-3" type="submit" > Register</Button> */}
+                                <button className="btn-xl fw-bold log-reg-button border-0 mt-3" type="submit">Register</button>
+
                                 <Form.Text className="text-danger">
                                     {error}
                                 </Form.Text>
                                 <hr />
 
-                                <p className='mt-3'>Already an User? <Link to="/login"> <span className='fw-bold text-black'>Click here to Login</span></Link></p>
+                                <p className='mt-3'>Already an User? <Link to="/login"> <span className='fw-bold text-primary'><small>Click here to Login</small></span></Link></p>
                             </div>
                         </Form>
                     </div>

@@ -19,7 +19,6 @@ const Home = () => {
             <Advertisement></Advertisement>
             <About></About>
             <Testimonial></Testimonial>
-            <Blog></Blog>
             <Contact></Contact>
         </div>
     );

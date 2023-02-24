@@ -20,3 +20,66 @@
 .cap {
     overflow-y: hidden;
 }
+
+
+/* for-small-devices*/
+@media (min-width: 281px) and (max-width:480px) {}
+
+/* for-tablet-devices */
+
+@media (min-width: 481px) and (max-width : 768px) {}
+
+
+/* for-large-devices */
+
+@media (min-width: 769px) and (max-width : 1200px) {}
+
+
+.home {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://img.freepik.com/free-photo/front-view-desk-with-stacked-books-copy-space_23-2148827255.jpg?w=1380&t=st=1669288713~exp=1669289313~hmac=957c1fc26f91ffaa31216127b3168596d7b31f7f6508c44f4e37d6767172aeb4");
+    background-position: center;
+    background-size: cover;
+    color: aliceblue;
+    position: relative;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.btnn-group {
+    display: flex;
+    /* margin: 50px 0; */
+
+}
+
+.btnn {
+    border-radius: 40px;
+    color: aliceblue;
+    padding: 15px 30px;
+    margin: 0 20px;
+    background: #FDC830;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #F37335, #FDC830);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #F37335, #FDC830);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+a:hover {
+    color: beige;
+}

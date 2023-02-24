@@ -7,6 +7,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import './NavBar.css'
 import './../../../Layout/DashboardLayout'
+import Typewriter from 'react-ts-typewriter';
 
 const NavBar = () => {
 
@@ -66,8 +67,6 @@ const NavBar = () => {
     return (
         <div className='header'>
 
-
-
             <Navbar collapseOnSelect className='nav-bg text-white' expand="lg" variant="light">
                 <Container>
                     <div className=''>
@@ -123,8 +122,8 @@ const NavBar = () => {
                                             </>
                                             :
                                             <>
-                                                <Link to='/login' style={{ textDecoration: 'underline', color: "EB6440", textDecorationColor: "#EB6440" }} className='fw-bold'>Login</Link>
-                                                <Link to='/register' style={{ textDecoration: 'underline', color: "EB6440", textDecorationColor: "#EB6440" }} className='fw-bold'>Register</Link>
+                                                <Link to='/login' style={{ textDecoration: 'none', color: "EB6440", textDecorationColor: "#EB6440" }} className='mt-1 fw-bold title'>Login</Link>
+                                                <Link to='/register' style={{ textDecoration: 'none', color: "EB6440", textDecorationColor: "#EB6440" }} className='mt-1 fw-bold title'>Register</Link>
                                             </>
                                     }
 
